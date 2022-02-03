@@ -29,12 +29,19 @@ def nome_da_segunda_lista():
 
 
 def visualizador_de_listas():
-    print(lista_atual)
-    if dict_atual == {}:
-        print('A lista está vazia')
-    else:
-        print(dict_atual)
-        start()
+    lista = int(input('Qual lista você deseja visualizar?'))
+    if lista == 1:
+        print(nome_primeira_lista)
+        if dict_1 == {}:
+            print('A lista está vazia')
+        else:
+            print(dict_1)
+    if lista == 2:
+        print(nome_segunda_lista)
+        if dict_2 == {}:
+            print('A lista está vazia')
+        else:
+            print(dict_2)
 
 
 def add_produtos():
@@ -52,13 +59,13 @@ def add_produtos():
 
 
 def alterador_lista_um(lista_atual):
-	lista_atual = nome_primeira_lista
-	return lista_atual
+    lista_atual = nome_primeira_lista
+    return lista_atual
     
 
 def alterador_lista_dois(lista_atual):
-	lista_atual = nome_segunda_lista
-	return lista_atual
+    lista_atual = nome_segunda_lista
+    return lista_atual
 
 
 def alterador_dict_um(dict_atual):
@@ -73,10 +80,10 @@ def alterador_dict_dois(dict_atual):
 
 def start():
     opcao = int(input("""Selecione a opção que você deseja: 
-        [ 1 ] - Visualizar lista 
+        [ 1 ] - Visualizar listas 
         [ 2 ] - Adicionar/remover itens na lista
-        [ 4 ] - Ver todas as listas
-        [ 3 ] - Fechar o programa\n\n"""))
+        [ 3 ] - Criar/Excluir uma lista
+        [ 4 ] - Fechar o programa\n\n"""))
 
 
     if opcao == 1:
@@ -100,10 +107,6 @@ def start():
                     print(f'Produto {produto} excluido com sucesso')
 
     elif opcao == 3:
-        print('Finalizando programa, até mais!')
-        sys.exit()
-
-    elif opcao == 4:
         escolha = int(input(f'Escolha qual lista deseja selecionar: 0 - Criar uma lista nova 1 - {nome_primeira_lista.capitalize()} 2 - {nome_segunda_lista.capitalize()}'))
         if escolha == 1:
             lista_atual = ''
@@ -111,7 +114,6 @@ def start():
             lista_atual = alterador_lista_um(lista_atual)
             dict_atual = alterador_dict_um(dict_atual)
             print(f'Agora você está na lista {nome_primeira_lista}')
-            start()
 
         elif escolha == 2:
             nome_da_segunda_lista()
@@ -120,8 +122,10 @@ def start():
             lista_atual = alterador_lista_dois(lista_atual)
             dict_atual = alterador_dict_dois(dict_atual)
             print(f'Agora você está na lista {nome_segunda_lista}')
-            start()
 
+    elif opcao == 4:
+        print('Finalizando programa, até mais!')
+        sys.exit()            
 
 dicionario_um()
 dicionario_dois()
@@ -131,7 +135,6 @@ inicio()
 dict_atual = {}
 lista_atual = nome_primeira_lista
 nome_segunda_lista = 'vazio'
-dict_2 = {}
 invalid_input = True
 
 while invalid_input:
