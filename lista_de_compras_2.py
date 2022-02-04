@@ -18,6 +18,11 @@ def dicionario_dois():
     dict_2 = dict()
 
 
+def dicionario_tres():
+    global dict_3
+    dict_3 = dict()
+
+
 def nome_da_primeira_lista():
     global nome_primeira_lista
     nome_primeira_lista = input('Escolha o nome da sua primeira lista:\n').capitalize()
@@ -26,6 +31,11 @@ def nome_da_primeira_lista():
 def nome_da_segunda_lista():
     global nome_segunda_lista
     nome_segunda_lista = input('Escolha o nome da sua segunda lista:\n').capitalize()
+
+
+def nome_da_terceira_lista():
+    global nome_terceira_lista
+    nome_terceira_lista = input('Escolha o nome da sua segunda lista:\n').capitalize()
 
 
 def visualizador_de_listas():
@@ -42,6 +52,12 @@ def visualizador_de_listas():
             print('A lista está vazia')
         else:
             print(dict_2)
+    if lista == 3:
+        print(nome_terceira_lista)
+        if dict_3 == {}:
+            print('A lista está vazia')
+        else:
+            print(dict_3)
 
 
 def add_produtos():
@@ -57,71 +73,111 @@ def add_produtos():
             dict_1[produto] = quantidade
             print(f'Produto {produto} adicionado com sucesso')
 
+def add_produtos_dois():
+    while True:
+        produto = input('Digite o produto que deseja adicionar: (Para sair pressione "X") ').capitalize()
 
-def alterador_lista_um(lista_atual):
-    lista_atual = nome_primeira_lista
-    return lista_atual
-    
+        if produto == "X":
+            start()
 
-def alterador_lista_dois(lista_atual):
-    lista_atual = nome_segunda_lista
-    return lista_atual
+        else:
+            quantidade = int(input('Quantidade?: '))
 
-
-def alterador_dict_um(dict_atual):
-    dict_atual = dict_1
-    return dict_atual
+            dict_2[produto] = quantidade
+            print(f'Produto {produto} adicionado com sucesso')
 
 
-def alterador_dict_dois(dict_atual):
-    dict_atual = dict_2
-    return dict_atual
+def add_produtos_tres():
+    while True:
+        produto = input('Digite o produto que deseja adicionar: (Para sair pressione "X") ').capitalize()
+
+        if produto == "X":
+            start()
+
+        else:
+            quantidade = int(input('Quantidade?: '))
+
+            dict_3[produto] = quantidade
+            print(f'Produto {produto} adicionado com sucesso')
 
 
 def start():
     opcao = int(input("""Selecione a opção que você deseja: 
-        [ 1 ] - Visualizar listas 
-        [ 2 ] - Adicionar/remover itens na lista
-        [ 3 ] - Criar/Excluir uma lista
-        [ 4 ] - Fechar o programa\n\n"""))
+        [ 1 ] - Visualizar Listas 
+        [ 2 ] - Adicionar/Remover Itens na Lista
+        [ 3 ] - Criar/Excluir uma Lista
+        [ 4 ] - Fechar o Programa\n\n"""))
 
 
     if opcao == 1:
         visualizador_de_listas()
+        start()
 
     elif opcao == 2:
-        add_or_del = input('Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
+        add = int(input(f'Qual lista você deseja acessar? (1) - {nome_primeira_lista} (2) - {nome_segunda_lista} (3) - {nome_terceira_lista}\n'))
+        if add == 1:
+            add_or_del = input('Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
 
-        if add_or_del == "A":
-            add_produtos()
+            if add_or_del == "A":
+                add_produtos()
 
-        else:
-            while True:
-                produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
+            else:
+                while True:
+                    produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
 
-                if produto == "X":
-                    start()
+                    if produto == "X":
+                        start()
 
-                else:
-                    del dict_1[produto]
-                    print(f'Produto {produto} excluido com sucesso')
+                    else:
+                        del dict_1[produto]
+                        print(f'Produto {produto} excluido com sucesso')
+        
+        if add == 2:
+            add_or_del = input('Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
+
+            if add_or_del == "A":
+                add_produtos_dois()
+
+            else:
+                while True:
+                    produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
+
+                    if produto == "X":
+                        start()
+
+                    else:
+                        del dict_2[produto]
+                        print(f'Produto {produto} excluido com sucesso')
+
+        if add == 3:
+            add_or_del = input('Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
+
+            if add_or_del == "A":
+                add_produtos_tres()
+
+            else:
+                while True:
+                    produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
+
+                    if produto == "X":
+                        start()
+
+                    else:
+                        del dict_3[produto]
+                        print(f'Produto {produto} excluido com sucesso')
 
     elif opcao == 3:
-        escolha = int(input(f'Escolha qual lista deseja selecionar: 0 - Criar uma lista nova 1 - {nome_primeira_lista.capitalize()} 2 - {nome_segunda_lista.capitalize()}'))
+        escolha = int(input(f'Escolha qual lista deseja selecionar: (1) - {nome_primeira_lista.capitalize()}\n (2) - {nome_segunda_lista.capitalize()}\n (3) - {nome_terceira_lista.capitalize()}'))
         if escolha == 1:
-            lista_atual = ''
-            dict_atual = []
-            lista_atual = alterador_lista_um(lista_atual)
-            dict_atual = alterador_dict_um(dict_atual)
             print(f'Agora você está na lista {nome_primeira_lista}')
 
         elif escolha == 2:
             nome_da_segunda_lista()
-            lista_atual = ''
-            dict_atual = []
-            lista_atual = alterador_lista_dois(lista_atual)
-            dict_atual = alterador_dict_dois(dict_atual)
             print(f'Agora você está na lista {nome_segunda_lista}')
+
+        elif escolha == 3:
+            nome_da_terceira_lista()
+            print(f'Agora você está na lista {nome_terceira_lista}')
 
     elif opcao == 4:
         print('Finalizando programa, até mais!')
@@ -129,13 +185,15 @@ def start():
 
 dicionario_um()
 dicionario_dois()
+dicionario_tres()
 nome_da_primeira_lista()
 inicio()
 
 dict_atual = {}
 lista_atual = nome_primeira_lista
-nome_segunda_lista = 'vazio'
+nome_segunda_lista = 'Vazio'
 invalid_input = True
+nome_terceira_lista = 'Vazio'
 
 while invalid_input:
     start()
