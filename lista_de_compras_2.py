@@ -160,7 +160,7 @@ def start():
 
     elif opcao == 3:
         escolha = int(input(
-            f'Escolha uma lista vazia para cria-la: (1) - {nome_primeira_lista.capitalize()}\n (2) - {nome_segunda_lista.capitalize()}\n (3) - {nome_terceira_lista.capitalize()}\n'))
+            f'Escolha uma lista vazia para cria-la: (Para excluir uma lista pressione 0)\n(1) - {nome_primeira_lista}\n(2) - {nome_segunda_lista}\n(3) - {nome_terceira_lista}\n'))
         if escolha == 1:
             print(f'Você já criou a lista {nome_primeira_lista}!')
             start()
@@ -175,6 +175,19 @@ def start():
             print(f'Você criou a lista {nome_terceira_lista}!')
             start()
 
+        elif escolha == 0:
+            list_del = int(input(f'Digite o número da lista para exclui-la:\n(1) - {nome_primeira_lista}\n(2) - {nome_segunda_lista}\n(3) - {nome_terceira_lista}\n'))
+            if list_del == 1:
+                nome_todas_listas.pop(0)
+                print(f'A lista {nome_primeira_lista} foi excluida!')
+                create_new_list = input('Deseja criar novamente uma lista agora? (S) Para SIM e (N) Para NÃO:\n').upper()
+                if create_new_list == "S":
+                    nome_da_primeira_lista()
+                    nome_todas_listas.append(nome_primeira_lista)
+                    start()
+                else:
+                    start()
+                    
     elif opcao == 4:
         print('Finalizando programa, até mais!')
         sys.exit()
@@ -188,8 +201,8 @@ dict_3 = dict()
 
 nome_segunda_lista = 'Vazio'
 nome_terceira_lista = 'Vazio'
+nome_todas_listas = [nome_primeira_lista, nome_segunda_lista, nome_terceira_lista]
 invalid_input = True
 
 while invalid_input:
     start()
-    
