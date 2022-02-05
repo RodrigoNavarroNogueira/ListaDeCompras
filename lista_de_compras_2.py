@@ -160,19 +160,19 @@ def start():
 
     elif opcao == 3:
         escolha = int(input(
-            f'Escolha qual lista deseja selecionar: (1) - {nome_primeira_lista.capitalize()}\n (2) - {nome_segunda_lista.capitalize()}\n (3) - {nome_terceira_lista.capitalize()}'))
+            f'Escolha uma lista vazia para cria-la: (1) - {nome_primeira_lista.capitalize()}\n (2) - {nome_segunda_lista.capitalize()}\n (3) - {nome_terceira_lista.capitalize()}\n'))
         if escolha == 1:
-            print(f'Agora você está na lista {nome_primeira_lista}')
+            print(f'Você já criou a lista {nome_primeira_lista}!')
             start()
 
         elif escolha == 2:
             nome_da_segunda_lista()
-            print(f'Agora você está na lista {nome_segunda_lista}')
+            print(f'Você criou a lista {nome_segunda_lista}!')
             start()
 
         elif escolha == 3:
             nome_da_terceira_lista()
-            print(f'Agora você está na lista {nome_terceira_lista}')
+            print(f'Você criou a lista {nome_terceira_lista}!')
             start()
 
     elif opcao == 4:
