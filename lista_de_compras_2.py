@@ -15,6 +15,10 @@ def nome_da_primeira_lista():
     nome_primeira_lista = input('Escolha o nome da sua primeira lista:\n').capitalize()
 
 
+def nome_da_primeira_lista_vazia():
+    global nome_primeira_lista
+    nome_primeira_lista = 'Vazio'
+
 def nome_da_segunda_lista():
     global nome_segunda_lista
     nome_segunda_lista = input('Escolha o nome da sua segunda lista:\n').capitalize()
@@ -89,12 +93,24 @@ def add_produtos_tres():
             print(f'Produto {produto} adicionado com sucesso')
 
 
+def escolha_lista_atual():
+    numero = int(input('Qual vai ser a lista_atual?'))
+    lista_atual = nome_todas_listas[numero]
+    return lista_atual
+
+
 def start():
+    breakpoint()
     opcao = int(input("""Selecione a opção que você deseja: 
         [ 1 ] - Visualizar Listas 
         [ 2 ] - Adicionar/Remover Itens na Lista
         [ 3 ] - Criar/Excluir uma Lista
         [ 4 ] - Fechar o Programa\n\n"""))
+
+    if opcao == 0:
+        lista_atual = escolha_lista_atual()
+        breakpoint()
+        start()
 
     if opcao == 1:
         visualizador_de_listas()
@@ -162,8 +178,14 @@ def start():
         escolha = int(input(
             f'Escolha uma lista vazia para cria-la: (Para excluir uma lista pressione 0)\n(1) - {nome_primeira_lista}\n(2) - {nome_segunda_lista}\n(3) - {nome_terceira_lista}\n'))
         if escolha == 1:
-            print(f'Você já criou a lista {nome_primeira_lista}!')
-            start()
+            if nome_primeira_lista != 'Vazio':
+                print(f'Você já criou a lista {nome_primeira_lista}!')
+                start()
+            else:
+                nome_da_primeira_lista()
+                nome_todas_listas.insert(0, nome_primeira_lista)
+                print(f'Você criou a lista {nome_primeira_lista}!')
+                start()
 
         elif escolha == 2:
             nome_da_segunda_lista()
@@ -183,11 +205,13 @@ def start():
                 create_new_list = input('Deseja criar novamente uma lista agora? (S) Para SIM e (N) Para NÃO:\n').upper()
                 if create_new_list == "S":
                     nome_da_primeira_lista()
-                    nome_todas_listas.append(nome_primeira_lista)
+                    nome_todas_listas.insert(0, nome_primeira_lista)
                     start()
                 else:
+                    nome_da_primeira_lista_vazia()
+                    nome_todas_listas.insert(0, nome_primeira_lista)
                     start()
-                    
+
     elif opcao == 4:
         print('Finalizando programa, até mais!')
         sys.exit()
@@ -195,10 +219,10 @@ def start():
 
 nome_da_primeira_lista()
 inicio()
+
 dict_1 = dict()
 dict_2 = dict()
 dict_3 = dict()
-
 nome_segunda_lista = 'Vazio'
 nome_terceira_lista = 'Vazio'
 nome_todas_listas = [nome_primeira_lista, nome_segunda_lista, nome_terceira_lista]
