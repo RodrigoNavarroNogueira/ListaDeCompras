@@ -2,6 +2,8 @@ import sys
 
 
 # python -m lista_de_compras_2
+# Toda vez que da o start ele esquece a lista_atual
+# A primeira lista está funcionando, agora precisa colocar pras listas 2 e 3, e verificar a nome_todas_listas no breakpoint
 
 
 def inicio():
@@ -19,14 +21,25 @@ def nome_da_primeira_lista_vazia():
     global nome_primeira_lista
     nome_primeira_lista = 'Vazio'
 
+
 def nome_da_segunda_lista():
     global nome_segunda_lista
     nome_segunda_lista = input('Escolha o nome da sua segunda lista:\n').capitalize()
 
 
+def nome_da_segunda_lista_vazia():
+    global nome_segunda_lista
+    nome_segunda_lista = 'Vazio'
+
+
 def nome_da_terceira_lista():
     global nome_terceira_lista
     nome_terceira_lista = input('Escolha o nome da sua terceira lista:\n').capitalize()
+
+
+def nome_da_terceira_lista_vazia():
+    global nome_terceira_lista
+    nome_terceira_lista = 'Vazio'
 
 
 def visualizador_de_listas():
@@ -100,11 +113,10 @@ def escolha_lista_atual():
 
 
 def start():
-    breakpoint()
     opcao = int(input("""Selecione a opção que você deseja: 
         [ 1 ] - Visualizar Listas 
         [ 2 ] - Adicionar/Remover Itens na Lista
-        [ 3 ] - Criar/Excluir uma Lista
+        [ 3 ] - Criar/Excluir e Renomear uma Lista
         [ 4 ] - Fechar o Programa\n\n"""))
 
     if opcao == 0:
@@ -176,29 +188,48 @@ def start():
 
     elif opcao == 3:
         escolha = int(input(
-            f'Escolha uma lista vazia para cria-la: (Para excluir uma lista pressione 0)\n(1) - {nome_primeira_lista}\n(2) - {nome_segunda_lista}\n(3) - {nome_terceira_lista}\n'))
+            f'Escolha uma Lista Vazia para cria-la: (Para excluir uma lista pressione 0)\n(1) - {nome_primeira_lista}\n(2) - {nome_segunda_lista}\n(3) - {nome_terceira_lista}\n'))
         if escolha == 1:
-            if nome_primeira_lista != 'Vazio':
-                print(f'Você já criou a lista {nome_primeira_lista}!')
-                start()
+            if nome_primeira_lista != "Vazio":
+                certeza = input('Tem certeza que quer renomear essa lista? (S) para SIM e (N) para NÃO:\n').upper()
+                if certeza == "S":
+                    nome_da_primeira_lista()
+                    nome_todas_listas.insert(0, nome_primeira_lista)
+                    print(f'Você criou a lista {nome_primeira_lista}!')
+                    start()
+
             else:
                 nome_da_primeira_lista()
-                nome_todas_listas.insert(0, nome_primeira_lista)
-                print(f'Você criou a lista {nome_primeira_lista}!')
                 start()
 
         elif escolha == 2:
-            nome_da_segunda_lista()
-            print(f'Você criou a lista {nome_segunda_lista}!')
-            start()
+            if nome_segunda_lista != "Vazio":
+                certeza = input('Tem certeza que quer renomear essa lista? (S) para SIM e (N) para NÃO:\n').upper()
+                if certeza == "S":
+                    nome_da_segunda_lista()
+                    nome_todas_listas.insert(1, nome_segunda_lista)
+                    print(f'Você criou a lista {nome_segunda_lista}!')
+                    start()
+
+            else:
+                nome_da_segunda_lista()
+                start()
 
         elif escolha == 3:
-            nome_da_terceira_lista()
-            print(f'Você criou a lista {nome_terceira_lista}!')
-            start()
+            if nome_terceira_lista != "Vazio":
+                certeza = input('Tem certeza que quer renomear essa lista? (S) para SIM e (N) para NÃO:\n').upper()
+                if certeza == "S":
+                    nome_da_terceira_lista()
+                    nome_todas_listas.insert(2, nome_terceira_lista)
+                    print(f'Você criou a lista {nome_terceira_lista}!')
+                    start()
+
+            else:
+                nome_da_terceira_lista()
+                start()
 
         elif escolha == 0:
-            list_del = int(input(f'Digite o número da lista para exclui-la:\n(1) - {nome_primeira_lista}\n(2) - {nome_segunda_lista}\n(3) - {nome_terceira_lista}\n'))
+            list_del = int(input(f'Digite o número da lista para exclui-la: (Para CANCELAR pressione 0)\n(1) - {nome_primeira_lista}\n(2) - {nome_segunda_lista}\n(3) - {nome_terceira_lista}\n'))
             if list_del == 1:
                 nome_todas_listas.pop(0)
                 print(f'A lista {nome_primeira_lista} foi excluida!')
@@ -210,6 +241,35 @@ def start():
                 else:
                     nome_da_primeira_lista_vazia()
                     nome_todas_listas.insert(0, nome_primeira_lista)
+                    start()
+
+            if list_del == 2:
+                nome_todas_listas.pop(1)
+                print(f'A lista {nome_segunda_lista} foi excluida!')
+                create_new_list = input('Deseja criar novamente uma lista agora? (S) Para SIM e (N) Para NÃO:\n').upper()
+                if create_new_list == "S":
+                    nome_da_segunda_lista()
+                    nome_todas_listas.insert(1, nome_segunda_lista)
+                    start()
+                else:
+                    nome_da_segunda_lista_vazia()
+                    nome_todas_listas.insert(1, nome_segunda_lista)
+                    start()
+
+            if list_del == 3:
+                nome_todas_listas.pop(2)
+                print(f'A lista {nome_terceira_lista} foi excluida!')
+                create_new_list = input('Deseja criar novamente uma lista agora? (S) Para SIM e (N) Para NÃO:\n').upper()
+                if create_new_list == "S":
+                    nome_da_terceira_lista()
+                    nome_todas_listas.insert(2, nome_terceira_lista)
+                    start()
+                else:
+                    nome_da_terceira_lista_vazia()
+                    nome_todas_listas.insert(2, nome_terceira_lista)
+                    start()
+
+                if list_del == 0:
                     start()
 
     elif opcao == 4:
