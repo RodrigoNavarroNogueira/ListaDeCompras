@@ -1,9 +1,6 @@
 import sys
 
 
-# python -m lista_de_compras_2
-
-
 def inicio():
     print('*-' * 30)
     print(f'{" Lista de Compras ":=^60}')
@@ -38,11 +35,6 @@ def nome_da_terceira_lista():
 def nome_da_terceira_lista_vazia():
     global nome_terceira_lista
     nome_terceira_lista = 'Vazio'
-
-
-def dicionario_um():
-    pass
-
 
 
 def visualizador_de_listas():
@@ -109,24 +101,12 @@ def add_produtos_tres():
             print(f'Produto {produto} adicionado com sucesso')
 
 
-def escolha_lista_atual():
-    numero = int(input('Qual vai ser a lista_atual?'))
-    lista_atual = nome_todas_listas[numero]
-    return lista_atual
-
-
 def start():
     opcao = int(input("""Selecione a opção que você deseja: 
         [ 1 ] - Visualizar Listas 
         [ 2 ] - Adicionar/Remover Itens na Lista
         [ 3 ] - Criar/Excluir e Renomear uma Lista
         [ 4 ] - Fechar o Programa\n\n"""))
-
-    if opcao == 0:
-        lista_atual = escolha_lista_atual()
-        breakpoint()
-        start()
-
     if opcao == 1:
         visualizador_de_listas()
         start()
@@ -134,21 +114,16 @@ def start():
     elif opcao == 2:
         add = int(input(
             f'Qual lista você deseja acessar? (1) - {nome_primeira_lista} (2) - {nome_segunda_lista} (3) - {nome_terceira_lista}\n'))
-
         if add == 1:
             add_or_del = input(
                 'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
-
             if add_or_del == "A":
                 add_produtos()
-
             else:
                 while True:
                     produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
-
                     if produto == "X":
                         start()
-
                     else:
                         del dict_1[produto]
                         print(f'Produto {produto} excluido com sucesso')
@@ -156,17 +131,13 @@ def start():
         if add == 2:
             add_or_del = input(
                 'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
-
             if add_or_del == "A":
                 add_produtos_dois()
-
             else:
                 while True:
                     produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
-
                     if produto == "X":
                         start()
-
                     else:
                         del dict_2[produto]
                         print(f'Produto {produto} excluido com sucesso')
@@ -174,24 +145,20 @@ def start():
         if add == 3:
             add_or_del = input(
                 'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
-
             if add_or_del == "A":
                 add_produtos_tres()
-
             else:
                 while True:
                     produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
-
                     if produto == "X":
                         start()
-
                     else:
                         del dict_3[produto]
                         print(f'Produto {produto} excluido com sucesso')
 
     elif opcao == 3:
         escolha = int(input(
-            f'Escolha uma Lista Vazia para cria-la: (Para excluir uma lista pressione 0 e para remomear pressione o número correspondente)\n(1) - {nome_primeira_lista}\n(2) - {nome_segunda_lista}\n(3) - {nome_terceira_lista}\n'))
+            f'Escolha uma Lista Vazia para cria-la: (Para excluir uma lista pressione 0 e para renomear pressione o número correspondente)\n(1) - {nome_primeira_lista}\n(2) - {nome_segunda_lista}\n(3) - {nome_terceira_lista}\n'))
         if escolha == 1:
             if nome_primeira_lista != "Vazio":
                 certeza = input('Tem certeza que quer renomear essa lista? (S) para SIM e (N) para NÃO:\n').upper()
@@ -200,9 +167,11 @@ def start():
                     nome_todas_listas.insert(0, nome_primeira_lista)
                     print(f'Você criou a lista {nome_primeira_lista}!')
                     start()
-
+                else:
+                    start()
             else:
                 nome_da_primeira_lista()
+                print(f'Você criou a lista {nome_primeira_lista}!')
                 start()
 
         elif escolha == 2:
@@ -213,9 +182,11 @@ def start():
                     nome_todas_listas.insert(1, nome_segunda_lista)
                     print(f'Você criou a lista {nome_segunda_lista}!')
                     start()
-
+                else:
+                    start()
             else:
                 nome_da_segunda_lista()
+                print(f'Você criou a lista {nome_segunda_lista}!')
                 start()
 
         elif escolha == 3:
@@ -226,9 +197,11 @@ def start():
                     nome_todas_listas.insert(2, nome_terceira_lista)
                     print(f'Você criou a lista {nome_terceira_lista}!')
                     start()
-
+                else:
+                    start()
             else:
                 nome_da_terceira_lista()
+                print(f'Você criou a lista {nome_terceira_lista}!')
                 start()
 
         elif escolha == 0:
@@ -274,7 +247,6 @@ def start():
                     nome_da_terceira_lista_vazia()
                     nome_todas_listas.insert(2, nome_terceira_lista)
                     start()
-
                 if list_del == 0:
                     start()
 
