@@ -1,6 +1,6 @@
 import sys
-# corrigindo bugs e diminuindo as linha de codigo
-# melhorar o input da visualização de listas
+
+
 def inicio():
     print('*-' * 30)
     print(f'{" Lista de Compras ":=^60}')
