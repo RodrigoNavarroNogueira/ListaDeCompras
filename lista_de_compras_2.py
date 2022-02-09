@@ -1,6 +1,6 @@
 import sys
-
-
+# corrigindo bugs e diminuindo as linha de codigo
+# melhorar o input da visualização de listas
 def inicio():
     print('*-' * 30)
     print(f'{" Lista de Compras ":=^60}')
@@ -64,11 +64,9 @@ def add_produtos():
         produto = input('Digite o produto que deseja adicionar: (Para sair pressione "X") ').capitalize()
 
         if produto == "X":
-            start()
-
+            break
         else:
             quantidade = int(input('Quantidade?: '))
-
             dict_1[produto] = quantidade
             print(f'Produto {produto} adicionado com sucesso')
 
@@ -76,13 +74,10 @@ def add_produtos():
 def add_produtos_dois():
     while True:
         produto = input('Digite o produto que deseja adicionar: (Para sair pressione "X") ').capitalize()
-
         if produto == "X":
-            start()
-
+            break
         else:
             quantidade = int(input('Quantidade?: '))
-
             dict_2[produto] = quantidade
             print(f'Produto {produto} adicionado com sucesso')
 
@@ -90,13 +85,10 @@ def add_produtos_dois():
 def add_produtos_tres():
     while True:
         produto = input('Digite o produto que deseja adicionar: (Para sair pressione "X") ').capitalize()
-
         if produto == "X":
-            start()
-
+            break
         else:
             quantidade = int(input('Quantidade?: '))
-
             dict_3[produto] = quantidade
             print(f'Produto {produto} adicionado com sucesso')
 
@@ -107,13 +99,14 @@ def start():
         [ 2 ] - Adicionar/Remover Itens na Lista
         [ 3 ] - Criar/Excluir e Renomear uma Lista
         [ 4 ] - Fechar o Programa\n\n"""))
+
     if opcao == 1:
         visualizador_de_listas()
         start()
-
     elif opcao == 2:
         add = int(input(
             f'Qual lista você deseja acessar? (1) - {nome_primeira_lista} (2) - {nome_segunda_lista} (3) - {nome_terceira_lista}\n'))
+
         if add == 1:
             add_or_del = input(
                 'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
@@ -147,6 +140,7 @@ def start():
                 'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
             if add_or_del == "A":
                 add_produtos_tres()
+                start()
             else:
                 while True:
                     produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
