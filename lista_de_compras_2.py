@@ -4,7 +4,7 @@ import sys
 def inicio():
     print('*-' * 30)
     print(f'{" Lista de Compras ":=^60}')
-    print('*-' * 30)
+    print('*-' * 30, '\n')
 
 
 def nome_da_primeira_lista():
@@ -38,7 +38,11 @@ def nome_da_terceira_lista_vazia():
 
 
 def visualizador_de_listas():
-    lista = int(input('Qual lista você deseja visualizar?'))
+    lista = int(input(f"""Qual lista você deseja visualizar?
+(1) - {nome_primeira_lista} 
+(2) - {nome_segunda_lista} 
+(3) - {nome_terceira_lista}\n"""))
+
     if lista == 1:
         print(nome_primeira_lista)
         if dict_1 == {}:
@@ -95,17 +99,19 @@ def add_produtos_tres():
 
 def start():
     opcao = int(input("""Selecione a opção que você deseja: 
-        [ 1 ] - Visualizar Listas 
-        [ 2 ] - Adicionar/Remover Itens na Lista
-        [ 3 ] - Criar/Excluir e Renomear uma Lista
-        [ 4 ] - Fechar o Programa\n\n"""))
+[ 1 ] - Visualizar Listas 
+[ 2 ] - Adicionar/Remover Itens na Lista
+[ 3 ] - Criar/Excluir e Renomear uma Lista
+[ 4 ] - Fechar o Programa\n\n"""))
 
     if opcao == 1:
         visualizador_de_listas()
         start()
     elif opcao == 2:
-        add = int(input(
-            f'Qual lista você deseja acessar? (1) - {nome_primeira_lista} (2) - {nome_segunda_lista} (3) - {nome_terceira_lista}\n'))
+        add = int(input(f"""Qual lista você deseja acessar?
+(1) - {nome_primeira_lista} 
+(2) - {nome_segunda_lista} 
+(3) - {nome_terceira_lista}\n"""))
 
         if add == 1:
             add_or_del = input(
@@ -151,8 +157,12 @@ def start():
                         print(f'Produto {produto} excluido com sucesso')
 
     elif opcao == 3:
-        escolha = int(input(
-            f'Escolha uma Lista Vazia para cria-la: (Para excluir uma lista pressione 0 e para renomear pressione o número correspondente)\n(1) - {nome_primeira_lista}\n(2) - {nome_segunda_lista}\n(3) - {nome_terceira_lista}\n'))
+        escolha = int(input(f"""Escolha uma Lista Vazia para cria-la:
+(Para excluir uma lista pressione 0, ou para renomear pressione o número correspondente)
+(1) - {nome_primeira_lista}
+(2) - {nome_segunda_lista}
+(3) - {nome_terceira_lista}\n"""))
+
         if escolha == 1:
             if nome_primeira_lista != "Vazio":
                 certeza = input('Tem certeza que quer renomear essa lista? (S) para SIM e (N) para NÃO:\n').upper()
@@ -199,12 +209,16 @@ def start():
                 start()
 
         elif escolha == 0:
-            list_del = int(input(f'Digite o número da lista para exclui-la: (Para CANCELAR pressione 0)\n(1) - {nome_primeira_lista}\n(2) - {nome_segunda_lista}\n(3) - {nome_terceira_lista}\n'))
+            list_del = int(input(f"""Digite o número da lista para exclui-la: (Para CANCELAR pressione 0)
+(1) - {nome_primeira_lista}
+(2) - {nome_segunda_lista}
+(3) - {nome_terceira_lista}\n"""))
+
             if list_del == 1:
                 dict_1.clear()
                 nome_todas_listas.pop(0)
                 print(f'A lista {nome_primeira_lista} foi excluida!')
-                create_new_list = input('Deseja criar novamente uma lista agora? (S) Para SIM e (N) Para NÃO:\n').upper()
+                create_new_list = input('Criar uma lista agora? (S) Para SIM e (N) Para NÃO:\n').upper()
                 if create_new_list == "S":
                     nome_da_primeira_lista()
                     nome_todas_listas.insert(0, nome_primeira_lista)
@@ -218,7 +232,7 @@ def start():
                 dict_2.clear()
                 nome_todas_listas.pop(1)
                 print(f'A lista {nome_segunda_lista} foi excluida!')
-                create_new_list = input('Deseja criar novamente uma lista agora? (S) Para SIM e (N) Para NÃO:\n').upper()
+                create_new_list = input('Criar uma lista agora? (S) Para SIM e (N) Para NÃO:\n').upper()
                 if create_new_list == "S":
                     nome_da_segunda_lista()
                     nome_todas_listas.insert(1, nome_segunda_lista)
@@ -232,7 +246,7 @@ def start():
                 dict_3.clear()
                 nome_todas_listas.pop(2)
                 print(f'A lista {nome_terceira_lista} foi excluida!')
-                create_new_list = input('Deseja criar novamente uma lista agora? (S) Para SIM e (N) Para NÃO:\n').upper()
+                create_new_list = input('Criar uma lista agora? (S) Para SIM e (N) Para NÃO:\n').upper()
                 if create_new_list == "S":
                     nome_da_terceira_lista()
                     nome_todas_listas.insert(2, nome_terceira_lista)
