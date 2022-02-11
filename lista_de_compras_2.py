@@ -49,13 +49,13 @@ def visualizador_de_listas():
             print('A lista está vazia')
         else:
             print(dict_1)
-    if lista == 2:
+    elif lista == 2:
         print(nome_segunda_lista)
         if dict_2 == {}:
             print('A lista está vazia')
         else:
             print(dict_2)
-    if lista == 3:
+    elif lista == 3:
         print(nome_terceira_lista)
         if dict_3 == {}:
             print('A lista está vazia')
@@ -114,47 +114,59 @@ def start():
 (3) - {nome_terceira_lista}\n"""))
 
         if add == 1:
-            add_or_del = input(
-                'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
-            if add_or_del == "A":
-                add_produtos()
+            if nome_primeira_lista == 'Vazio':
+                print('Você primeiro deve criar uma lista antes de adicionar produtos')
             else:
-                while True:
-                    produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
-                    if produto == "X":
-                        start()
-                    else:
-                        del dict_1[produto]
-                        print(f'Produto {produto} excluido com sucesso')
+                add_or_del = input(
+                    'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
+
+                if add_or_del == "A":
+                    add_produtos()
+                else:
+                    while True:
+                        produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
+                        if produto == "X":
+                            start()
+                        else:
+                            del dict_1[produto]
+                            print(f'Produto {produto} excluido com sucesso')
 
         if add == 2:
-            add_or_del = input(
-                'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
-            if add_or_del == "A":
-                add_produtos_dois()
+            if nome_segunda_lista == 'Vazio':
+                print('Você primeiro deve criar uma lista antes de adicionar produtos')
             else:
-                while True:
-                    produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
-                    if produto == "X":
-                        start()
-                    else:
-                        del dict_2[produto]
-                        print(f'Produto {produto} excluido com sucesso')
+                add_or_del = input(
+                    'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
+
+                if add_or_del == "A":
+                    add_produtos_dois()
+                else:
+                    while True:
+                        produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
+                        if produto == "X":
+                            start()
+                        else:
+                            del dict_2[produto]
+                            print(f'Produto {produto} excluido com sucesso')
 
         if add == 3:
-            add_or_del = input(
-                'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
-            if add_or_del == "A":
-                add_produtos_tres()
-                start()
+            if nome_terceira_lista == 'Vazio':
+                print('Você primeiro deve criar uma lista antes de adicionar produtos')
             else:
-                while True:
-                    produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
-                    if produto == "X":
-                        start()
-                    else:
-                        del dict_3[produto]
-                        print(f'Produto {produto} excluido com sucesso')
+                add_or_del = input(
+                    'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
+
+                if add_or_del == "A":
+                    add_produtos_tres()
+                    start()
+                else:
+                    while True:
+                        produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
+                        if produto == "X":
+                            start()
+                        else:
+                            del dict_3[produto]
+                            print(f'Produto {produto} excluido com sucesso')
 
     elif opcao == 3:
         escolha = int(input(f"""Escolha uma Lista Vazia para cria-la:
