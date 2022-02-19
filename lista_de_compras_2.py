@@ -110,7 +110,9 @@ def start():
         visualizador_de_listas()
         start()
     elif opcao == 2:
-        add = int(input(f"""Qual lista você deseja acessar?
+        add = 0
+        while add == 0 or add not in [1,2,3]:
+            add = int(input(f"""Qual lista você deseja acessar?
 (1) - {nome_primeira_lista} 
 (2) - {nome_segunda_lista} 
 (3) - {nome_terceira_lista}\n"""))
@@ -119,7 +121,9 @@ def start():
             if nome_primeira_lista == 'Vazio':
                 print('Você primeiro deve criar uma lista antes de adicionar produtos')
             else:
-                add_or_del = input(
+                add_or_del = 0
+                while add_or_del == 0 or add_or_del not in 'AR':
+                    add_or_del = input(
                     'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
 
                 if add_or_del == "A":
@@ -137,7 +141,9 @@ def start():
             if nome_segunda_lista == 'Vazio':
                 print('Você primeiro deve criar uma lista antes de adicionar produtos')
             else:
-                add_or_del = input(
+                add_or_del = 0
+                while add_or_del == 0 or add_or_del not in 'AR':
+                    add_or_del = input(
                     'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
 
                 if add_or_del == "A":
@@ -155,9 +161,10 @@ def start():
             if nome_terceira_lista == 'Vazio':
                 print('Você primeiro deve criar uma lista antes de adicionar produtos')
             else:
-                add_or_del = input(
+                add_or_del = 0
+                while add_or_del == 0 or add_or_del not in 'AR':
+                    add_or_del = input(
                     'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
-
                 if add_or_del == "A":
                     add_produtos_tres()
                     start()
