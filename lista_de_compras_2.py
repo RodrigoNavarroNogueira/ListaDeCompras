@@ -98,7 +98,9 @@ def add_produtos_tres():
 
 
 def start():
-    opcao = int(input("""Selecione a opção que você deseja: 
+    opcao = 0
+    while opcao == 0 or opcao not in [1,2,3,4]:
+        opcao = int(input("""Selecione a opção que você deseja: 
 [ 1 ] - Visualizar Listas 
 [ 2 ] - Adicionar/Remover Itens na Lista
 [ 3 ] - Criar/Excluir e Renomear uma Lista
