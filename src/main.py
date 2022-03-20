@@ -1,4 +1,5 @@
 import sys
+import sqlite3
 
 
 def inicio():
@@ -45,10 +46,8 @@ def visualizador_de_listas():
 
     if lista == 1:
         print(nome_primeira_lista)
-        if dict_1 == {}:
-            print('A lista está vazia')
-        else:
-            print(dict_1)
+        cursor.execute("SELECT * FROM lista_um")
+        print(cursor.fetchall())
     elif lista == 2:
         print(nome_segunda_lista)
         if dict_2 == {}:
@@ -68,10 +67,13 @@ def add_produtos():
         produto = input('Digite o produto que deseja adicionar: (Para sair pressione "X") ').capitalize()
 
         if produto == "X":
+            start()
             break
+            start()
         else:
             quantidade = int(input('Quantidade?: '))
-            dict_1[produto] = quantidade
+            cursor.execute(f"INSERT INTO lista_um VALUES ('{produto}', {quantidade})")
+            banco.commit()
             print(f'Produto {produto} adicionado com sucesso')
 
 
@@ -134,7 +136,8 @@ def start():
                         if produto == "X":
                             start()
                         else:
-                            del dict_1[produto]
+                            cursor.execute(f"DELETE from lista_um WHERE produto = '{produto}'")
+                            banco.commit()
                             print(f'Produto {produto} excluido com sucesso')
 
         if add == 2:
@@ -294,6 +297,9 @@ nome_segunda_lista = 'Vazio'
 nome_terceira_lista = 'Vazio'
 nome_todas_listas = [nome_primeira_lista, nome_segunda_lista, nome_terceira_lista]
 invalid_input = True
+banco = sqlite3.connect('lista.db')
+cursor = banco.cursor()
+
 
 while invalid_input:
     start()
