@@ -1,4 +1,7 @@
+from datetime import datetime
+import random
 import sys
+
 import sqlite3
 
 
@@ -67,12 +70,11 @@ def add_produtos():
         produto = input('Digite o produto que deseja adicionar: (Para sair pressione "X") ').capitalize()
 
         if produto == "X":
-            start()
             break
-            start()
+
         else:
             quantidade = int(input('Quantidade?: '))
-            cursor.execute(f"INSERT INTO lista_um VALUES ('{produto}', {quantidade})")
+            cursor.execute(f"INSERT INTO lista_um VALUES ('{random.randint(1, 999)}', '{nome_primeira_lista}', '{produto}', {quantidade}, 'User: Rodrigo', '{datetime.now()}')")
             banco.commit()
             print(f'Produto {produto} adicionado com sucesso')
 
