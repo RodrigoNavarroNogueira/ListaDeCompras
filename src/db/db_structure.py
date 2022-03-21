@@ -10,7 +10,7 @@ class DatabaseStructure(AbstractEngine):
             self.cursor.execute(
                 '''
                 CREATE TABLE lista_um(
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    id INT PRIMARY KEY,
                     list_name VARCHAR,
                     product VARCHAR,
                     amount INT,
@@ -20,7 +20,6 @@ class DatabaseStructure(AbstractEngine):
                 '''
             )
             self.database.commit()
-
 
 
     def drop_table_lista(self):
