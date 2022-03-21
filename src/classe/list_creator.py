@@ -13,3 +13,11 @@ class ListCreator:
         Quantidade: {self.amount}
         Usuário: {self.user}
         '''
+
+    
+    def list_add():
+        lista = ListCreator('Primeira lista do Rodrigo', 'Arroz', 3, 'User:rodrigo.n')
+        print(lista)
+
+
+
