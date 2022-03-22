@@ -8,6 +8,8 @@ from src.classe.structure_functions import StructureFunction
 
 
 funcoes = StructureFunction
-funcoes.inicio()
-funcoes.nome_da_primeira_lista()
-lista = ListCreator.list_add()
+lista = ListCreator
+funcoes.initiation()
+funcoes.name_list()
+funcoes.start()
+lista.visualizador_de_listas()
