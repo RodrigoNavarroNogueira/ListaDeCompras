@@ -29,5 +29,23 @@ class StructureFunction:
         print(cursor.fetchall())
 
 
+    def lista_para_manipular(list_name):
+        add = 0
+        while add == 0 or add not in [1,2,3]:
+            add = int(input(f"""Qual lista você deseja acessar?
+        (1) - {list_name}\n"""))
+
+
+    def adicionar_ou_remover():
+        add_or_del = 0
+        while add_or_del == 0 or add_or_del not in 'AR':
+            add_or_del = input(
+            'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
+        return add_or_del
+
+
+
+
+
 banco = sqlite3.connect('lista.db')
 cursor = banco.cursor()
