@@ -11,5 +11,8 @@ funcoes = StructureFunction
 lista = ListCreator
 funcoes.initiation()
 list_name = funcoes.name_list()
-funcoes.start()
-lista.visualizador_de_listas()
+option = funcoes.start()
+
+if option == 1:
+    funcoes.list_viewer(list_name)
+
