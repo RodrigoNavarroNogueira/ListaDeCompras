@@ -10,6 +10,6 @@ from src.classe.structure_functions import StructureFunction
 funcoes = StructureFunction
 lista = ListCreator
 funcoes.initiation()
-funcoes.name_list()
+list_name = funcoes.name_list()
 funcoes.start()
 lista.visualizador_de_listas()
