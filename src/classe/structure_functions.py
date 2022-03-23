@@ -1,3 +1,5 @@
+import sqlite3
+
 class StructureFunction:
     def initiation():
         print('*-' * 30)
@@ -19,3 +21,13 @@ class StructureFunction:
         [ 3 ] - Criar/Excluir e Renomear uma Lista
         [ 4 ] - Fechar o Programa\n\n"""))
         return option
+
+
+    def list_viewer(list_name):
+        print(f'Nome da lista escolhida: {list_name}')
+        cursor.execute("SELECT * FROM lista_um")
+        print(cursor.fetchall())
+
+
+banco = sqlite3.connect('lista.db')
+cursor = banco.cursor()
