@@ -72,6 +72,12 @@ class StructureFunction:
                 banco.commit()
                 print(f'Produto {produto} excluido com sucesso')
 
+    
+    def update_product_or_amount():
+        update = input('Deseja alterar um produto? ou quantidade?')
+        if update == 'produto':
+            ...
+
 
 banco = sqlite3.connect('lista.db')
 cursor = banco.cursor()
