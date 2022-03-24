@@ -15,7 +15,7 @@ if option == 1:
 
 elif option == 2:
     funcoes.lista_para_manipular(list_name)
-    escolha = funcoes.adicionar_ou_remover()
+    escolha = funcoes.adicionar_remover_atualizar()
 
     if escolha == 'A':
         funcoes.add_produtos(list_name)
