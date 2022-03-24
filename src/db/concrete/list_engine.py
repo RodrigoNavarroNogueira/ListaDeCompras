@@ -1,17 +1,21 @@
 from src.db.interface import AbstractEngine
 
+import random
+from datetime import datetime
+
 class ListEngine(AbstractEngine):
     def __init__(self):
         super().__init__('lista')
 
 
-    def create(self, register_id, list_name, product, amount, created_at):
+    def create(self, id, product, amount, list_name, user, created_at):
         query = f'''
-            INSERT INTO invoice VALUES(
-                {register_id},
-                '{list_name}',
+            INSERT INTO lista_um VALUES(
+                {id},
                 '{product}',
                 {amount},
+                '{list_name}',
+                '{user}',
                 '{created_at}'
             )
         '''
@@ -25,17 +29,17 @@ class ListEngine(AbstractEngine):
         return result
 
 
-    def update(self, invoice_id):
-        query = f"UPDATE invoice SET status = 'paid' WHERE id = {invoice_id}"
+    def update(self, id):
+        query = f"UPDATE lista_um SET product = 'paid' WHERE id = {id}"
         self.cursor.execute(query)
         self.database.commit()
 
 
-    def delete(self, invoice_id):
+    def delete(self, id):
         query = f'''
-            DELETE FROM invoice
-            WHERE id = {invoice_id}
+            DELETE FROM lista_um
+            WHERE id = {id}
         '''
         self.cursor.execute(query)
         self.database.commit()
-        return invoice_id
+        return id
