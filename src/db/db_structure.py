@@ -11,9 +11,9 @@ class DatabaseStructure(AbstractEngine):
                 '''
                 CREATE TABLE lista_um(
                     id INT PRIMARY KEY,
-                    list_name VARCHAR,
                     product VARCHAR,
                     amount INT,
+                    list_name VARCHAR,
                     user VARCHAR,
                     created DATETIME
                 )
@@ -26,3 +26,7 @@ class DatabaseStructure(AbstractEngine):
         query = 'DROP TABLE lista_um;'
         self.cursor.execute(query)
         self.database.commit()
+
+
+engine = DatabaseStructure()
+engine.create_table_lista()
