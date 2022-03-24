@@ -1,3 +1,4 @@
+from src.db.concrete.list_engine import ListEngine
 import sqlite3
 import random
 from datetime import datetime
@@ -38,11 +39,14 @@ class StructureFunction:
         (1) - {list_name}\n"""))
 
 
-    def adicionar_ou_remover():
+    def adicionar_remover_atualizar():
         add_or_del = 0
         while add_or_del == 0 or add_or_del not in 'AR':
             add_or_del = input(
-            'Deseja adicionar, atualizar ou remover produtos? ( A ) para Adicionar ( U ) para Atualizar e ( R ) para Remover ').upper()
+            """Deseja adicionar, atualizar ou remover produtos?
+            ( A ) para Adicionar
+            ( U ) para Atualizar
+            ( R ) para Remover """).upper()
         return add_or_del
 
 
@@ -55,8 +59,7 @@ class StructureFunction:
 
             else:
                 quantidade = int(input('Quantidade?: '))
-                cursor.execute(f"INSERT INTO lista_um VALUES ('{random.randint(1, 999)}', '{produto}', {quantidade}, '{list_name}',  'Rodrigo', '{datetime.now()}')")
-                banco.commit()
+                engine.create(random.randint(1, 999), produto, quantidade, list_name, 'Rodrigo', datetime.now())
                 print(f'Produto {produto} adicionado com sucesso')
 
 
@@ -68,8 +71,7 @@ class StructureFunction:
                 break
 
             else:
-                cursor.execute(f"DELETE from lista_um WHERE product = '{produto}'")
-                banco.commit()
+                engine.delete(produto)
                 print(f'Produto {produto} excluido com sucesso')
 
     
@@ -81,3 +83,5 @@ class StructureFunction:
 
 banco = sqlite3.connect('lista.db')
 cursor = banco.cursor()
+engine = ListEngine()
+
