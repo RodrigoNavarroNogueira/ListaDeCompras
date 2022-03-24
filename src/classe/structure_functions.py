@@ -1,4 +1,6 @@
 import sqlite3
+import random
+from datetime import datetime
 
 class StructureFunction:
     def initiation():
@@ -40,11 +42,35 @@ class StructureFunction:
         add_or_del = 0
         while add_or_del == 0 or add_or_del not in 'AR':
             add_or_del = input(
-            'Deseja adicionar ou Remover produtos? ( A ) para Adicionar e ( R ) para Remover ').upper()
+            'Deseja adicionar, atualizar ou remover produtos? ( A ) para Adicionar ( U ) para Atualizar e ( R ) para Remover ').upper()
         return add_or_del
 
 
+    def add_produtos(list_name):
+        while True:
+            produto = input('Digite o produto que deseja adicionar: (Para sair pressione "X") ').capitalize()
 
+            if produto == "X":
+                break
+
+            else:
+                quantidade = int(input('Quantidade?: '))
+                cursor.execute(f"INSERT INTO lista_um VALUES ('{random.randint(1, 999)}', '{produto}', {quantidade}, '{list_name}',  'Rodrigo', '{datetime.now()}')")
+                banco.commit()
+                print(f'Produto {produto} adicionado com sucesso')
+
+
+    def remover_produtos():
+        while True:
+            produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
+
+            if produto == "X":
+                break
+
+            else:
+                cursor.execute(f"DELETE from lista_um WHERE product = '{produto}'")
+                banco.commit()
+                print(f'Produto {produto} excluido com sucesso')
 
 
 banco = sqlite3.connect('lista.db')
