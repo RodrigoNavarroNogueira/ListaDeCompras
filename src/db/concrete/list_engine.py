@@ -35,11 +35,10 @@ class ListEngine(AbstractEngine):
         self.database.commit()
 
 
-    def delete(self, id):
+    def delete(self, produto):
         query = f'''
-            DELETE FROM lista_um
-            WHERE id = {id}
+        DELETE from lista_um WHERE product = '{produto}'
         '''
         self.cursor.execute(query)
         self.database.commit()
-        return id
+        return produto
