@@ -29,10 +29,18 @@ class ListEngine(AbstractEngine):
         return result
 
 
-    def update(self, id):
-        query = f"UPDATE lista_um SET product = 'paid' WHERE id = {id}"
-        self.cursor.execute(query)
-        self.database.commit()
+    def update(self, product_amount, novo, antigo):
+        if product_amount == 'product':
+            query = f"UPDATE lista_um SET {product_amount} = '{novo}' WHERE {product_amount} = '{antigo}'"
+            self.cursor.execute(query)
+            self.database.commit()
+            print('O produto foi alterado!')
+
+        elif product_amount == 'amount':
+            query = f"UPDATE lista_um SET {product_amount} = {novo} WHERE product = '{antigo}'"
+            self.cursor.execute(query)
+            self.database.commit()
+            print('A quantidade foi alterada!')
 
 
     def delete(self, produto):
