@@ -7,13 +7,13 @@ lista = ListCreator
 engine = ListEngine()
 funcoes.initiation()
 list_name = funcoes.name_list()
-option = funcoes.start()
+opcao = funcoes.start()
 
-if option == 1:
+if opcao == 1:
     funcoes.list_viewer(list_name)
     funcoes.start()
 
-elif option == 2:
+elif opcao == 2:
     funcoes.lista_para_manipular(list_name)
     escolha = funcoes.adicionar_remover_atualizar()
 
@@ -26,4 +26,10 @@ elif option == 2:
         funcoes.start()
 
     elif escolha == 'U':
-        ...
+        funcoes.update_product_or_amount()
+        funcoes.start()
+
+elif opcao == 3:
+    ...
+
+
