@@ -41,7 +41,7 @@ class StructureFunction:
 
     def adicionar_remover_atualizar():
         add_or_del = 0
-        while add_or_del == 0 or add_or_del not in 'AR':
+        while add_or_del == 0 or add_or_del not in 'AUR':
             add_or_del = input(
             """Deseja adicionar, atualizar ou remover produtos?
             ( A ) para Adicionar
@@ -76,9 +76,19 @@ class StructureFunction:
 
     
     def update_product_or_amount():
-        update = input('Deseja alterar um produto? ou quantidade?')
-        if update == 'produto':
-            ...
+        product_amount = input('Deseja alterar um produto? ou quantidade?\n')
+        if product_amount == 'product':
+            antigo = input('Qual produto você deseja atualizar?\n')
+            novo = input('Qual o nome do produto?\n')
+            engine.update(product_amount, novo, antigo)
+
+        elif product_amount == 'amount':
+            antigo = input('Qual produto você deseja atualizar a quantidade?\n')
+            novo = int(input('Qual a quantidade?\n'))
+            engine.update(product_amount, novo, antigo)
+
+
+
 
 
 banco = sqlite3.connect('lista.db')
