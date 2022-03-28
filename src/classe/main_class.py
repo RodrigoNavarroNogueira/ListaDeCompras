@@ -30,6 +30,4 @@ elif opcao == 2:
         funcoes.start()
 
 elif opcao == 3:
-    ...
-
-
+    funcoes.escolha_da_lista_vazia(list_name)
