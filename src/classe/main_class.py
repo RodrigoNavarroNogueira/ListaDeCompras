@@ -18,7 +18,7 @@ def loop():
 
         if opcao == 1:
             funcoes.list_viewer(list_name)
-            funcoes.start()
+            loop()
 
         elif opcao == 2:
             funcoes.lista_para_manipular(list_name)
@@ -26,24 +26,22 @@ def loop():
 
             if escolha == 'A':
                 funcoes.add_produtos(list_name)
-                funcoes.start()
+                loop()
 
             elif escolha == 'R':
                 funcoes.remover_produtos()
-                funcoes.start()
+                loop()
 
             elif escolha == 'U':
                 funcoes.update_product_or_amount()
-                funcoes.start()
+                loop()
 
         elif opcao == 3:
             escolha = funcoes.escolha_da_lista(list_name)
 
             if escolha == 1:
                 funcoes.name_list()
-                funcoes.start()
+                loop()
 
 
-invalid_input = True
-while invalid_input:
-    loop()
+loop()
