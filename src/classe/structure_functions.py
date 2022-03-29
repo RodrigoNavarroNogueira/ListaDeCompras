@@ -88,7 +88,7 @@ class StructureFunction:
             engine.update(product_amount, novo, antigo)
 
 
-    def escolha_da_lista_vazia(list_name):
+    def escolha_da_lista(list_name):
         escolha = int(input(f"""Escolha uma Lista Vazia para cria-la:
         (Para excluir uma lista pressione 0, ou para renomear pressione o número correspondente)
         (1) - {list_name}\n"""))
