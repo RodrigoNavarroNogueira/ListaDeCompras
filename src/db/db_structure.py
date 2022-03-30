@@ -6,10 +6,10 @@ class DatabaseStructure(AbstractEngine):
         super().__init__('lista')
 
 
-    def create_table_lista(self):
+    def create_table_lista(self, name_list):
             self.cursor.execute(
-                '''
-                CREATE TABLE lista_um(
+                f'''
+                CREATE TABLE {name_list}(
                     id INT PRIMARY KEY,
                     product VARCHAR,
                     amount INT,
@@ -28,5 +28,5 @@ class DatabaseStructure(AbstractEngine):
         self.database.commit()
 
 
-engine = DatabaseStructure()
-engine.create_table_lista()
+#engine = DatabaseStructure()
+#engine.create_table_lista()
