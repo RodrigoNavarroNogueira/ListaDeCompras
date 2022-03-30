@@ -8,9 +8,9 @@ class ListEngine(AbstractEngine):
         super().__init__('lista')
 
 
-    def create(self, id, product, amount, list_name, user, created_at):
+    def create(self, name_list, id, product, amount, list_name, user, created_at):
         query = f'''
-            INSERT INTO lista_um VALUES(
+            INSERT INTO {name_list} VALUES(
                 {id},
                 '{product}',
                 {amount},
