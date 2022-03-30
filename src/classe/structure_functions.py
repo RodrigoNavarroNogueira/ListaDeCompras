@@ -1,4 +1,5 @@
 from src.db.concrete.list_engine import ListEngine
+from src.db.db_structure import DatabaseStructure
 import sqlite3
 import random
 from datetime import datetime
@@ -11,7 +12,10 @@ class StructureFunction:
 
 
     def name_list():
-        name_list = input('Escolha o nome da sua lista:\n').capitalize()
+        name_list = input('Escolha o nome da sua lista:\n').lower()
+        db.create_table_lista(name_list)
+        all_list.append(name_list)
+        print(all_list)
         return name_list
 
 
@@ -26,17 +30,17 @@ class StructureFunction:
         return option
 
 
-    def list_viewer(list_name):
-        print(f'Nome da lista escolhida: {list_name}')
-        cursor.execute("SELECT * FROM lista_um")
+    def list_viewer(name_list):
+        print(f'Nome da lista escolhida: {name_list}')
+        cursor.execute(f"SELECT * FROM {name_list}")
         print(cursor.fetchall())
 
 
-    def lista_para_manipular(list_name):
+    def lista_para_manipular(name_list):
         add = 0
         while add == 0 or add not in [1,2,3]:
             add = int(input(f"""Qual lista você deseja acessar?
-        (1) - {list_name}\n"""))
+        (1) - {name_list}\n"""))
 
 
     def adicionar_remover_atualizar():
@@ -50,7 +54,7 @@ class StructureFunction:
         return add_or_del
 
 
-    def add_produtos(list_name):
+    def add_produtos(name_list):
         while True:
             produto = input('Digite o produto que deseja adicionar: (Para sair pressione "X") ').capitalize()
 
@@ -59,7 +63,7 @@ class StructureFunction:
 
             else:
                 quantidade = int(input('Quantidade?: '))
-                engine.create(random.randint(1, 999), produto, quantidade, list_name, 'Rodrigo', datetime.now())
+                engine.create(name_list, random.randint(1, 999), produto, quantidade, name_list, 'Rodrigo', datetime.now())
                 print(f'Produto {produto} adicionado com sucesso')
 
 
@@ -89,7 +93,7 @@ class StructureFunction:
 
 
     def escolha_da_lista(list_name):
-        escolha = int(input(f"""Escolha uma Lista Vazia para cria-la:
+        escolha = int(input(f"""Escolha uma lista:
         (Para excluir uma lista pressione 0, ou para renomear pressione o número correspondente)
         (1) - {list_name}\n"""))
         return escolha
@@ -98,4 +102,5 @@ class StructureFunction:
 banco = sqlite3.connect('lista.db')
 cursor = banco.cursor()
 engine = ListEngine()
-
+db = DatabaseStructure()
+all_list = list()
