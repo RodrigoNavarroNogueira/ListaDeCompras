@@ -2,14 +2,11 @@ from src.classe.list_creator import ListCreator
 from src.classe.structure_functions import StructureFunction
 from src.db.concrete.list_engine import ListEngine
 
-
-
 funcoes = StructureFunction
 lista = ListCreator
-engine = ListEngine()
+engine = ListEngine
 funcoes.initiation()
 list_name = funcoes.name_list()
-
 
 
 def loop():
@@ -42,6 +39,5 @@ def loop():
             if escolha == 1:
                 funcoes.name_list()
                 loop()
-
 
 loop()
