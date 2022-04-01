@@ -1,6 +1,5 @@
 from src.db.interface import AbstractEngine
 
-
 class DatabaseStructure(AbstractEngine):
     def __init__(self):
         super().__init__('lista')
