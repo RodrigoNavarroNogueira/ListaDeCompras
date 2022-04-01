@@ -6,6 +6,7 @@ funcoes = StructureFunction
 lista = ListCreator
 engine = ListEngine
 funcoes.initiation()
+funcoes.check_if_table_not_exists()
 list_name = funcoes.name_list()
 
 
