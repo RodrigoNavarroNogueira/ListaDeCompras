@@ -99,6 +99,11 @@ class StructureFunction:
         return escolha
 
 
+    def check_if_table_not_exists():
+        cursor.execute('SELECT name FROM sqlite_master WHERE type="table";')
+        print(cursor.fetchall())
+        
+
 banco = sqlite3.connect('lista.db')
 cursor = banco.cursor()
 engine = ListEngine()
