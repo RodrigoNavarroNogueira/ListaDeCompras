@@ -99,7 +99,7 @@ class StructureFunction:
         return escolha
 
 
-    def check_if_table_not_exists():
+    def tabelas_existentes():
         cursor.execute('SELECT name FROM sqlite_master WHERE type="table";')
         print(cursor.fetchall())
         
