@@ -92,10 +92,11 @@ class StructureFunction:
             engine.update(product_amount, novo, antigo)
 
 
-    def escolha_da_lista(list_name):
-        escolha = int(input(f"""Escolha uma lista:
-        (Para excluir uma lista pressione 0, ou para renomear pressione o número correspondente)
-        (1) - {list_name}\n"""))
+    def criar_excluir_renomear():
+        escolha = int(input(f"""Escolha uma opção:
+        Para criar uma lista pressione 0
+        Para excluir uma lista pressione 1
+        Para renomear uma lista pressione 2\n"""))
         return escolha
 
 

@@ -35,10 +35,16 @@ def loop():
                 loop()
 
         elif opcao == 3:
-            escolha = funcoes.escolha_da_lista(list_name)
+            escolha = funcoes.criar_excluir_renomear()
 
-            if escolha == 1:
+            if escolha == 0:
                 funcoes.name_list()
                 loop()
 
+            elif escolha == 1:
+                ...
+
+            elif escolha == 2:
+                ...
+                
 loop()
