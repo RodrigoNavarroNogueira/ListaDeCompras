@@ -19,6 +19,13 @@ class StructureFunction:
         return name_list
 
 
+    def delete_list():
+        name_list = input('Qual o nome da lista que você deseja excluir?')
+        db.drop_table_lista(name_list)
+        print(f'Lista {name_list} removida com sucesso!')
+        return name_list
+
+
     def start():
         option = 0
         while option == 0 or option not in [1,2,3,4]:

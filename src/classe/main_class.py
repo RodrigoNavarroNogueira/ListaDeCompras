@@ -42,9 +42,10 @@ def loop():
                 loop()
 
             elif escolha == 1:
-                ...
-
+                funcoes.delete_list()
+                loop()
+                
             elif escolha == 2:
                 ...
-                
+
 loop()

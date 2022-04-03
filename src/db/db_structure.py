@@ -21,8 +21,8 @@ class DatabaseStructure(AbstractEngine):
             self.database.commit()
 
 
-    def drop_table_lista(self):
-        query = 'DROP TABLE lista_um;'
+    def drop_table_lista(self, name_list):
+        query = f'DROP TABLE {name_list};'
         self.cursor.execute(query)
         self.database.commit()
 
