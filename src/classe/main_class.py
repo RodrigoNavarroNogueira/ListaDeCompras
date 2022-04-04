@@ -46,6 +46,6 @@ def loop():
                 loop()
                 
             elif escolha == 2:
-                ...
+                loop()
 
 loop()
