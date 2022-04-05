@@ -7,7 +7,7 @@ lista = ListCreator
 engine = ListEngine
 funcoes.initiation()
 funcoes.tabelas_existentes()
-list_name = funcoes.name_list()
+list_name = funcoes.create_list()
 
 
 def loop():
@@ -38,7 +38,7 @@ def loop():
             escolha = funcoes.criar_excluir_renomear()
 
             if escolha == 0:
-                funcoes.name_list()
+                funcoes.create_list()
                 loop()
 
             elif escolha == 1:
