@@ -23,7 +23,13 @@ class StructureFunction:
         name_list = input('Qual o nome da lista que você deseja excluir?')
         db.drop_table_lista(name_list)
         print(f'Lista {name_list} removida com sucesso!')
-        return name_list
+
+
+    def rename_list():
+        name_list = input('Qual o nome da lista que você deseja renomear?\n')
+        new_name = input('Qual o nome que deseja colocar?\n')
+        db.rename_lista(name_list, new_name)
+        print('O nome da lista foi alterado!')
 
 
     def start():
