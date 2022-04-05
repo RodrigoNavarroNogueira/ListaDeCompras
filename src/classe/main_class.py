@@ -46,7 +46,7 @@ def loop():
                 loop()
                 
             elif escolha == 2:
-                funcoes.name_list()
+                funcoes.rename_list()
                 loop()
 
 loop()
