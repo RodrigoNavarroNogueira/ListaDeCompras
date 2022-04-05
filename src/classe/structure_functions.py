@@ -11,7 +11,7 @@ class StructureFunction:
         print('*-' * 30, '\n')
 
 
-    def name_list():
+    def create_list():
         name_list = input('Escolha o nome da sua lista:\n').lower()
         db.create_table_lista(name_list)
         all_list.append(name_list)
