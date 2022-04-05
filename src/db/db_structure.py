@@ -27,5 +27,11 @@ class DatabaseStructure(AbstractEngine):
         self.database.commit()
 
 
+    def rename_lista(self, name_list, new_name):
+        query = f'ALTER TABLE {name_list} RENAME TO {new_name};'
+        self.cursor.execute(query)
+        self.database.commit()
+
+
 #engine = DatabaseStructure()
 #engine.create_table_lista()
