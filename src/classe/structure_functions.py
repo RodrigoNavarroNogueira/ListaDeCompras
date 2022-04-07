@@ -113,9 +113,10 @@ class StructureFunction:
 
 
     def tabelas_existentes():
-        cursor.execute('SELECT name FROM sqlite_master WHERE type="table";')
+        tables = cursor.execute('SELECT name FROM sqlite_master WHERE type="table";')
         print(cursor.fetchall())
-        
+        return tables
+
 
 banco = sqlite3.connect('lista.db')
 cursor = banco.cursor()

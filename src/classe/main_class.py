@@ -6,7 +6,7 @@ funcoes = StructureFunction
 lista = ListCreator
 engine = ListEngine
 funcoes.initiation()
-funcoes.tabelas_existentes()
+tables = funcoes.tabelas_existentes()
 list_name = funcoes.create_list()
 
 
@@ -48,5 +48,9 @@ def loop():
             elif escolha == 2:
                 funcoes.rename_list()
                 loop()
+
+        elif opcao == 4:
+            print('Finalizando programa, até mais!')
+            break
 
 loop()
