@@ -7,6 +7,7 @@ lista = ListCreator
 engine = ListEngine
 funcoes.initiation()
 tables = funcoes.tabelas_existentes()
+# adicionar uma condição nessa funcao caso tenha itens na lista das tabelas 
 list_name = funcoes.create_list()
 
 
