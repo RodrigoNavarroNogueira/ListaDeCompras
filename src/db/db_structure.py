@@ -34,4 +34,4 @@ class DatabaseStructure(AbstractEngine):
 
 
 #engine = DatabaseStructure()
-#engine.create_table_lista()
+#engine.drop_table_lista('testeum')

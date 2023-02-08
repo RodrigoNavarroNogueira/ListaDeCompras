@@ -29,23 +29,23 @@ class ListEngine(AbstractEngine):
         return result
 
 
-    def update(self, product_amount, novo, antigo):
+    def update(self, escolha, product_amount, novo, antigo):
         if product_amount == 'product':
-            query = f"UPDATE lista_um SET {product_amount} = '{novo}' WHERE {product_amount} = '{antigo}'"
+            query = f"UPDATE {escolha} SET {product_amount} = '{novo}' WHERE {product_amount} = '{antigo}'"
             self.cursor.execute(query)
             self.database.commit()
             print('O produto foi alterado!')
 
         elif product_amount == 'amount':
-            query = f"UPDATE lista_um SET {product_amount} = {novo} WHERE product = '{antigo}'"
+            query = f"UPDATE {escolha} SET {product_amount} = {novo} WHERE product = '{antigo}'"
             self.cursor.execute(query)
             self.database.commit()
             print('A quantidade foi alterada!')
 
 
-    def delete(self, produto):
+    def delete(self, escolha, produto):
         query = f'''
-        DELETE from lista_um WHERE product = '{produto}'
+        DELETE from {escolha} WHERE product = '{produto}'
         '''
         self.cursor.execute(query)
         self.database.commit()

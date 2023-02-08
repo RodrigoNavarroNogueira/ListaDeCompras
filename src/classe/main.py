@@ -6,9 +6,7 @@ funcoes = StructureFunction
 lista = ListCreator
 engine = ListEngine
 funcoes.initiation()
-tables = funcoes.tabelas_existentes()
-# adicionar uma condição nessa funcao caso tenha itens na lista das tabelas 
-list_name = funcoes.create_list()
+funcoes.quantidade_tabelas(funcoes.create_list)
 
 
 def loop():
@@ -16,23 +14,30 @@ def loop():
         opcao = funcoes.start()
 
         if opcao == 1:
-            funcoes.list_viewer(list_name)
+            listas = funcoes.tabelas_existentes_str(funcoes.create_list)
+            funcoes.tabelas_existentes(listas)
+            dicionario = funcoes.dict_list(listas)
+            escolha = funcoes.escolhe_lista(dicionario)
+            funcoes.list_viewer(escolha)
             loop()
 
         elif opcao == 2:
-            funcoes.lista_para_manipular(list_name)
-            escolha = funcoes.adicionar_remover_atualizar()
+            listas = funcoes.tabelas_existentes_str(funcoes.create_list)
+            funcoes.tabelas_existentes(listas)
+            dicionario = funcoes.dict_list(listas)
+            escolha = funcoes.escolhe_lista(dicionario)
+            add_or_del = funcoes.adicionar_remover_atualizar()
 
-            if escolha == 'A':
-                funcoes.add_produtos(list_name)
+            if add_or_del == 'A':
+                funcoes.add_produtos(escolha)
                 loop()
 
-            elif escolha == 'R':
-                funcoes.remover_produtos()
+            elif add_or_del == 'R':
+                funcoes.remover_produtos(escolha)
                 loop()
 
-            elif escolha == 'U':
-                funcoes.update_product_or_amount()
+            elif add_or_del == 'U':
+                funcoes.update_product_or_amount(escolha)
                 loop()
 
         elif opcao == 3:
@@ -52,6 +57,6 @@ def loop():
 
         elif opcao == 4:
             print('Finalizando programa, até mais!')
-            break
+            raise SystemExit
 
 loop()

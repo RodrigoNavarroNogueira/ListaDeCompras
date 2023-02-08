@@ -11,14 +11,9 @@ class StructureFunction:
         print('*-' * 30, '\n')
 
 
-    def verificar_lista():
-        ...
-
-        
     def create_list():
         name_list = input('Escolha o nome da sua lista:\n').lower()
         db.create_table_lista(name_list)
-        all_list.append(name_list)
         return name_list
 
 
@@ -40,23 +35,26 @@ class StructureFunction:
         while option == 0 or option not in [1,2,3,4]:
             option = int(input("""\nSelecione a opção que você deseja: 
         [ 1 ] - Visualizar Listas 
-        [ 2 ] - Adicionar/Remover Itens na Lista
+        [ 2 ] - Adicionar/Remover/Atualizar Itens na Lista
         [ 3 ] - Criar/Excluir e Renomear uma Lista
         [ 4 ] - Fechar o Programa\n\n"""))
         return option
 
 
-    def list_viewer(name_list):
-        print(f'Nome da lista escolhida: {name_list}')
-        cursor.execute(f"SELECT * FROM {name_list}")
-        print(cursor.fetchall())
+    def list_viewer(escolha):
+        print(f'Nome da lista escolhida: {escolha}\n')
+        cursor.execute(f"SELECT * FROM {escolha}")
+        x = str(cursor.fetchall())
+        if x == "[]":
+            print('Esta lista está vazia!\n')
+        else:
+            cursor.execute(f"SELECT * FROM {escolha}")
+            print(cursor.fetchall())
 
 
-    def lista_para_manipular(name_list):
-        add = 0
-        while add == 0 or add not in [1,2,3]:
-            add = int(input(f"""Qual lista você deseja acessar?
-        (1) - {name_list}\n"""))
+    def lista_para_manipular():
+        lista_escolhida = int(input('\nDigite o número correspondente da lista que será alterada: \n'))
+        return lista_escolhida
 
 
     def adicionar_remover_atualizar():
@@ -66,11 +64,11 @@ class StructureFunction:
             """Deseja adicionar, atualizar ou remover produtos?
             ( A ) para Adicionar
             ( U ) para Atualizar
-            ( R ) para Remover """).upper()
+            ( R ) para Remover\n""").upper()
         return add_or_del
 
 
-    def add_produtos(name_list):
+    def add_produtos(escolha):
         while True:
             produto = input('Digite o produto que deseja adicionar: (Para sair pressione "X") ').capitalize()
 
@@ -79,11 +77,11 @@ class StructureFunction:
 
             else:
                 quantidade = int(input('Quantidade?: '))
-                engine.create(name_list, random.randint(1, 999), produto, quantidade, name_list, 'Rodrigo', datetime.now())
+                engine.create(escolha, random.randint(1, 999), produto, quantidade, escolha, 'Rodrigo', datetime.now())
                 print(f'Produto {produto} adicionado com sucesso')
 
 
-    def remover_produtos():
+    def remover_produtos(escolha):
         while True:
             produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
 
@@ -91,21 +89,21 @@ class StructureFunction:
                 break
 
             else:
-                engine.delete(produto)
+                engine.delete(escolha, produto)
                 print(f'Produto {produto} excluido com sucesso')
 
     
-    def update_product_or_amount():
+    def update_product_or_amount(escolha):
         product_amount = input('Deseja alterar um produto? ou quantidade?\n')
         if product_amount == 'product':
-            antigo = input('Qual produto você deseja atualizar?\n')
-            novo = input('Qual o nome do produto?\n')
-            engine.update(product_amount, novo, antigo)
+            antigo = input('Qual produto você deseja atualizar?.\n').capitalize()
+            novo = input('Qual o nome do produto?\n').capitalize()
+            engine.update(escolha, product_amount, novo, antigo)
 
         elif product_amount == 'amount':
-            antigo = input('Qual produto você deseja atualizar a quantidade?\n')
+            antigo = input('Qual produto você deseja atualizar a quantidade?\n').capitalize()
             novo = int(input('Qual a quantidade?\n'))
-            engine.update(product_amount, novo, antigo)
+            engine.update(escolha, product_amount, novo, antigo)
 
 
     def criar_excluir_renomear():
@@ -116,14 +114,44 @@ class StructureFunction:
         return escolha
 
 
-    def tabelas_existentes():
-        tables = cursor.execute('SELECT name FROM sqlite_master WHERE type="table";')
-        print(cursor.fetchall())
-        return tables
+    def tabelas_existentes(listas):
+        print('\n')
+        for i, lista in enumerate(listas):
+            print(i + 1, lista[0])
+
+
+    def dict_list(listas):
+        dicionario = dict(zip(range(1, len(listas) + 1), listas))
+        return dicionario
+
+
+    def tabelas_existentes_str(create_list):
+        cursor.execute('SELECT name FROM sqlite_master WHERE type="table";')
+        listas = list(cursor.fetchall())
+        if listas == []:
+            print('Não existe nenhuma lista, será necessário criar sua primeira!')
+            create_list()
+            cursor.execute('SELECT name FROM sqlite_master WHERE type="table";')
+            listas = list(cursor.fetchall())
+        return listas
+
+
+    def escolhe_lista(dicionario):
+        num = int(input('\n Digite o número correspondente da lista que você deseja acessar: '))
+        a = str(dicionario[num])
+        escolha = a[2:-3]
+        return escolha
+
+
+    def quantidade_tabelas(create_list):
+        cursor.execute('SELECT name FROM sqlite_master WHERE type="table";')
+        if len(cursor.fetchall()) >= 1:
+            pass
+        else:
+            create_list()
 
 
 banco = sqlite3.connect('lista.db')
 cursor = banco.cursor()
 engine = ListEngine()
 db = DatabaseStructure()
-all_list = list()
