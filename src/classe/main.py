@@ -19,6 +19,7 @@ def loop():
             dicionario = funcoes.dict_list(listas)
             escolha = funcoes.escolhe_lista(dicionario)
             funcoes.list_viewer(escolha)
+            funcoes.list_viewer_new(escolha)
             loop()
 
         elif opcao == 2:
