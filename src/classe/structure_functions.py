@@ -56,7 +56,7 @@ class StructureFunction:
         cursor.execute(f"SELECT * FROM {escolha}")
         x = list(cursor.fetchall())
         if x == []:
-            print('Esta lista está vazia!\n')
+            return 'Esta lista está vazia!\n'
         else:
             count = 0
             result = []
