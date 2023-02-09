@@ -59,10 +59,14 @@ class StructureFunction:
             print('Esta lista está vazia!\n')
         else:
             count = 0
+            result = []
             for produto in x:
                 print(f'Produto: {x[count][1]} / Quantidade: {x[count][2]}')
+                result.append((f'Produto: {x[count][1]} / Quantidade: {x[count][2]}'))
                 count += 1
-            return x
+            y = str(result)
+            z = y.replace(',', '\n')
+            return z[1:-1]
 
 
     def adicionar_remover_atualizar():
