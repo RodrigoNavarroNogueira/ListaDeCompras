@@ -48,13 +48,21 @@ class StructureFunction:
         if x == "[]":
             print('Esta lista está vazia!\n')
         else:
-            cursor.execute(f"SELECT * FROM {escolha}")
-            print(cursor.fetchall())
+            print(x)
 
 
-    def lista_para_manipular():
-        lista_escolhida = int(input('\nDigite o número correspondente da lista que será alterada: \n'))
-        return lista_escolhida
+    def list_viewer_new(escolha):
+        print(f'Nome da lista escolhida: {escolha}\n')
+        cursor.execute(f"SELECT * FROM {escolha}")
+        x = list(cursor.fetchall())
+        if x == []:
+            print('Esta lista está vazia!\n')
+        else:
+            count = 0
+            for produto in x:
+                print(f'Produto: {x[count][1]} / Quantidade: {x[count][2]}')
+                count += 1
+            return x
 
 
     def adicionar_remover_atualizar():
