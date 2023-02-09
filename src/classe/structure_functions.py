@@ -61,7 +61,7 @@ class StructureFunction:
             count = 0
             result = []
             for produto in x:
-                print(f'Produto: {x[count][1]} / Quantidade: {x[count][2]}')
+                print(f'Produto: {x[count][1]} / Quantidade: {x[count][2]}\n')
                 result.append((f'Produto: {x[count][1]} / Quantidade: {x[count][2]}'))
                 count += 1
             y = str(result)
