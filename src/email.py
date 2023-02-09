@@ -10,10 +10,10 @@ def enviar_email(x):
 
 
     msg = email.message.Message()
-    msg['Subject'] = "Teste"
-    msg['From'] = 'rodrigo.navarro36@gmail.com'
-    msg['To'] = 'rodrigo.navarro36@gmail.com'
-    password = 'dzdfbkmnlmcmkyik'
+    msg['Subject'] = "Titulo do e-mail"
+    msg['From'] = 'Seu e-mail'
+    msg['To'] = 'Destinatário'
+    password = 'Senha do seu e-mail'
     msg.add_header('Content-Type', 'text/html')
     msg.set_payload(corpo_email)
 
