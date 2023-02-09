@@ -1,6 +1,7 @@
 from src.classe.list_creator import ListCreator
 from src.classe.structure_functions import StructureFunction
 from src.db.concrete.list_engine import ListEngine
+from src.email import enviar_email
 
 funcoes = StructureFunction
 lista = ListCreator
@@ -19,7 +20,8 @@ def loop():
             dicionario = funcoes.dict_list(listas)
             escolha = funcoes.escolhe_lista(dicionario)
             funcoes.list_viewer(escolha)
-            funcoes.list_viewer_new(escolha)
+            x = funcoes.list_viewer_new(escolha)
+            enviar_email(x)
             loop()
 
         elif opcao == 2:
