@@ -7,7 +7,7 @@ def enviar_email(x):
     corpo_email = f"""
     <p>Segue sua lista escolhida no aplicativo:</p>
     <p>{x}</p>
-    <p>Boas compras!</p>
+    <p>{'Boas compras!' if 'Produto' in x else 'Tente novamente após adicionar produtos na sua lista.'}</p>
     """
 
 
