@@ -65,7 +65,7 @@ class StructureFunction:
                 result.append(f'<p>Produto: {x[count][1]} / Quantidade: {x[count][2]}</p>')
                 count += 1
             y = str(result)
-            z = y.replace(',', '\n')
+            z = y.replace(',', '*********************************************************')
             return z[2:-2]
 
 
