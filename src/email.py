@@ -1,6 +1,6 @@
 import smtplib
 import email.message
-
+from src.utils.settings import EMAIL, PASSWORD
 
 def enviar_email(x): 
     corpo_email = f"""
@@ -11,10 +11,10 @@ def enviar_email(x):
 
 
     msg = email.message.Message()
-    msg['Subject'] = "Titulo do e-mail"
-    msg['From'] = 'Seu e-mail'
-    msg['To'] = 'Destinatário'
-    password = 'Senha do seu e-mail'
+    msg['Subject'] = "Sua lista de compras"
+    msg['From'] = EMAIL
+    msg['To'] = EMAIL
+    password = PASSWORD
     msg.add_header('Content-Type', 'text/html')
     msg.set_payload(corpo_email)
 
