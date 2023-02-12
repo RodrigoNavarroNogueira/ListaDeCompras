@@ -64,9 +64,8 @@ class StructureFunction:
                 print(f'Produto: {x[count][1]} / Quantidade: {x[count][2]}\n')
                 result.append(f'<p>Produto: {x[count][1]} / Quantidade: {x[count][2]}</p>')
                 count += 1
-            y = str(result)
-            z = y.replace(',', '*********************************************************')
-            return z[2:-2]
+            y = '\n'.join(map(str, result))
+            return y[3:-2]
 
 
     def adicionar_remover_atualizar():
