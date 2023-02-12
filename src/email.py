@@ -2,10 +2,10 @@ import smtplib
 import email.message
 from src.utils.settings import EMAIL, PASSWORD
 
+
 def enviar_email(x): 
     corpo_email = f"""
-    <p>Segue sua lista escolhida no aplicativo: </p>
-    <p>{x}</p>
+    <p>Segue sua lista escolhida no aplicativo: {x}</p>
     <p>Boas compras!</p>
     """
 
@@ -17,7 +17,6 @@ def enviar_email(x):
     password = PASSWORD
     msg.add_header('Content-Type', 'text/html')
     msg.set_payload(corpo_email)
-
     s = smtplib.SMTP('smtp.gmail.com: 587')
     s.starttls()
     s.login(msg['From'], password)
