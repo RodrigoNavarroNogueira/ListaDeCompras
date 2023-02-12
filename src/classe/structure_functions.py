@@ -12,22 +12,22 @@ class StructureFunction:
 
 
     def create_list():
-        name_list = input('Escolha o nome da sua lista:\n').lower()
+        name_list = input('Escolha o nome da sua lista:\n').lower().strip()
         db.create_table_lista(name_list)
         return name_list
 
 
     def delete_list():
-        name_list = input('Qual o nome da lista que você deseja excluir?')
+        name_list = input('Qual o nome da lista que você deseja excluir?').strip()
         db.drop_table_lista(name_list)
         print(f'Lista {name_list} removida com sucesso!')
 
 
     def rename_list():
-        name_list = input('Qual o nome da lista que você deseja renomear?\n')
-        new_name = input('Qual o nome que deseja colocar?\n')
+        name_list = input('Qual o nome da lista que você deseja renomear?\n').strip()
+        new_name = input('Qual o nome que deseja colocar?\n').strip()
         db.rename_lista(name_list, new_name)
-        print('O nome da lista foi alterado!')
+        print('O nome da lista foi alterada!')
 
 
     def start():
@@ -75,13 +75,13 @@ class StructureFunction:
             """Deseja adicionar, atualizar ou remover produtos?
             ( A ) para Adicionar
             ( U ) para Atualizar
-            ( R ) para Remover\n""").upper()
+            ( R ) para Remover\n""").upper().strip()
         return add_or_del
 
 
     def add_produtos(escolha):
         while True:
-            produto = input('Digite o produto que deseja adicionar: (Para sair pressione "X") ').capitalize()
+            produto = input('Digite o produto que deseja adicionar: (Para sair pressione "X") ').capitalize().strip()
 
             if produto == "X":
                 break
@@ -94,7 +94,7 @@ class StructureFunction:
 
     def remover_produtos(escolha):
         while True:
-            produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize()
+            produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize().strip()
 
             if produto == "X":
                 break
@@ -105,7 +105,7 @@ class StructureFunction:
 
     
     def update_product_or_amount(escolha):
-        product_amount = input('Deseja alterar um produto? ou quantidade?\n').strip().lower()
+        product_amount = input('Deseja alterar um produto? ou quantidade?\n').strip()
         if product_amount == 'produto':
             product_amount = 'product'
             antigo = input('Qual produto você deseja atualizar?\n').capitalize()
