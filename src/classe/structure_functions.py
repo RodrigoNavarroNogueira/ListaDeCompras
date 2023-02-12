@@ -66,7 +66,7 @@ class StructureFunction:
                 count += 1
             y = str(result)
             z = y.replace(',', '\n')
-            return z[1:-1]
+            return z[2:-2]
 
 
     def adicionar_remover_atualizar():
