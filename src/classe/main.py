@@ -19,6 +19,8 @@ def loop():
             funcoes.tabelas_existentes(listas)
             dicionario = funcoes.dict_list(listas)
             escolha = funcoes.escolhe_lista(dicionario)
+            if escolha == 0:
+                loop()
             x = funcoes.list_viewer_new(escolha)
             enviar_email(x)
             loop()

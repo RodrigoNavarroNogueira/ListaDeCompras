@@ -150,9 +150,12 @@ class StructureFunction:
 
 
     def escolhe_lista(dicionario):
-        num = int(input('\n Digite o número correspondente da lista que você deseja acessar: '))
-        a = str(dicionario[num])
-        escolha = a[2:-3]
+        num = int(input('\n Digite o número correspondente da lista que você deseja acessar:\n Para retornar ao menu principal, pressione 0\n\n '))
+        if num == 0:
+            escolha = 0
+        else:
+            a = str(dicionario[num])
+            escolha = a[2:-3]
         return escolha
 
 
