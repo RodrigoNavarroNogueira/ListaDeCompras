@@ -11,6 +11,12 @@ class StructureFunction:
         print('*-' * 30, '\n')
 
 
+    def create_first_list():
+        name_list = input('Escolha o nome da sua primeira lista:\n').lower().strip()
+        db.create_table_lista(name_list)
+        return name_list
+
+
     def create_list():
         name_list = input('Escolha o nome da sua lista:\n').lower().strip()
         db.create_table_lista(name_list)
@@ -159,12 +165,12 @@ class StructureFunction:
         return escolha
 
 
-    def quantidade_tabelas(create_list):
+    def quantidade_tabelas(create_first_list):
         cursor.execute('SELECT name FROM sqlite_master WHERE type="table";')
         if len(cursor.fetchall()) >= 1:
             pass
         else:
-            create_list()
+            create_first_list()
 
 
 banco = sqlite3.connect('lista.db')

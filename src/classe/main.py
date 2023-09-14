@@ -7,7 +7,7 @@ funcoes = StructureFunction
 lista = ListCreator
 engine = ListEngine
 funcoes.initiation()
-funcoes.quantidade_tabelas(funcoes.create_list)
+funcoes.quantidade_tabelas(funcoes.create_first_list)
 
 
 def loop():
