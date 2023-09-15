@@ -23,10 +23,10 @@ class StructureFunction:
         return name_list
 
 
-    def delete_list():
-        name_list = input('Qual o nome da lista que você deseja excluir?').strip()
-        db.drop_table_lista(name_list)
-        print(f'Lista {name_list} removida com sucesso!')
+    def delete_list(dicionario):
+        num = int(input('Digite o número correspondente da lista que você deseja excluir:\n'))
+        db.drop_table_lista(dicionario[num][0])
+        print(f'Lista {dicionario[num][0]} removida com sucesso!')
 
 
     def rename_list():

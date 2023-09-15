@@ -52,7 +52,10 @@ def loop():
                 loop()
 
             elif escolha == 1:
-                funcoes.delete_list()
+                listas = funcoes.tabelas_existentes_str(funcoes.create_list)
+                funcoes.tabelas_existentes(listas)
+                dicionario = funcoes.dict_list(listas)
+                funcoes.delete_list(dicionario)
                 loop()
                 
             elif escolha == 2:
