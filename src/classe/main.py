@@ -30,6 +30,8 @@ def loop():
             funcoes.tabelas_existentes(listas)
             dicionario = funcoes.dict_list(listas)
             escolha = funcoes.escolhe_lista(dicionario)
+            if escolha == 0:
+                loop()
             add_or_del = funcoes.adicionar_remover_atualizar()
 
             if add_or_del == 'A':
@@ -62,9 +64,11 @@ def loop():
                 funcoes.rename_list()
                 loop()
 
+            elif escolha == 3:
+                loop()
+
         elif opcao == 4:
-            print('Finalizando programa, até mais!')
+            print('Finalizando o programa, até mais!')
             raise SystemExit
 
 loop()
-

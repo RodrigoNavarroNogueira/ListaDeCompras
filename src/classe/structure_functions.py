@@ -126,7 +126,7 @@ class StructureFunction:
 
 
     def criar_excluir_renomear():
-        escolha = int(input(f"""Escolha uma opção:
+        escolha = int(input(f"""\nEscolha uma opção, para retornar ao menu principal pressione 3:
         Para criar uma lista pressione 0
         Para excluir uma lista pressione 1
         Para renomear uma lista pressione 2\n"""))
