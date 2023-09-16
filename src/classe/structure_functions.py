@@ -156,12 +156,20 @@ class StructureFunction:
 
 
     def escolhe_lista(dicionario):
-        num = int(input('\n Digite o número correspondente da lista que você deseja acessar:\n Para retornar ao menu principal, pressione 0\n\n '))
-        if num == 0:
-            escolha = 0
-        else:
-            a = str(dicionario[num])
-            escolha = a[2:-3]
+        b = True
+        while b is True:
+            num = int(input('\n Digite o número correspondente da lista que você deseja acessar:\n Para retornar ao menu principal, pressione 0\n\n '))
+            if num == 0:
+                escolha = 0
+                break
+            else:
+                try:
+                    a = str(dicionario[num])
+                    escolha = a[2:-3]
+                    b = False
+                except KeyError:
+                    print('Voce não digitou um número de alguma lista')
+                    escolha = 0
         return escolha
 
 
