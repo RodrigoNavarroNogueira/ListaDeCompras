@@ -38,12 +38,17 @@ class StructureFunction:
 
     def start():
         option = 0
-        while option == 0 or option not in [1,2,3,4]:
-            option = int(input("""\nSelecione a opção que você deseja: 
-        [ 1 ] - Visualizar Listas 
-        [ 2 ] - Adicionar/Remover/Atualizar Itens na Lista
-        [ 3 ] - Criar/Excluir e Renomear uma Lista
-        [ 4 ] - Fechar o Programa\n\n"""))
+        try:
+            while option == 0 or option not in [1, 2, 3, 4]:
+                option = int(input("""\nSelecione a opção que você deseja: 
+[ 1 ] - Visualizar Listas 
+[ 2 ] - Adicionar/Remover/Atualizar Itens na Lista
+[ 3 ] - Criar/Excluir e Renomear uma Lista
+[ 4 ] - Fechar o Programa\n\n"""))
+                if type(option) is int and option not in [1, 2, 3, 4]:
+                    print('\nVocê não digitou uma opção válida')        
+        except ValueError:
+            print('\nVocê não digitou uma opção válida')
         return option
 
 
