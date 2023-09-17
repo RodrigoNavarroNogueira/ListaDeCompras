@@ -128,14 +128,16 @@ class StructureFunction:
     def criar_excluir_renomear():
         b = True
         while b is True:
-            escolha = int(input(f"""\nEscolha uma opção, para retornar ao menu principal pressione 3:
-            Para criar uma lista pressione 0
-            Para excluir uma lista pressione 1
-            Para renomear uma lista pressione 2\n"""))
-            if escolha not in [0, 1, 2, 3]:
-                print('Você não digitou um número de alguma lista')
-            elif escolha in [0, 1, 2, 3]:
-                b = False
+            try:
+                escolha = int(input(f"""\nEscolha uma opção, para retornar ao menu principal pressione 3:
+                Para criar uma lista pressione 0
+                Para excluir uma lista pressione 1
+                Para renomear uma lista pressione 2\n\n"""))
+                if escolha in [0, 1, 2, 3]:
+                    break
+            except ValueError:
+                    print('\nVocê não digitou uma opção válida')
+        b = False
         return escolha
 
 
