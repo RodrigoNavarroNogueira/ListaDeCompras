@@ -22,7 +22,7 @@ def loop():
             if escolha == 0:
                 loop()
             x = funcoes.list_viewer_new(escolha)
-            enviar_email(x)
+            #enviar_email(x)
             loop()
 
         elif opcao == 2:
