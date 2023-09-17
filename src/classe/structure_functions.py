@@ -135,6 +135,8 @@ class StructureFunction:
                 Para renomear uma lista pressione 2\n\n"""))
                 if escolha in [0, 1, 2, 3]:
                     break
+                if type(escolha) is int:
+                    print('\nVocê não digitou uma opção válida')
             except ValueError:
                     print('\nVocê não digitou uma opção válida')
         b = False
