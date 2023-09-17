@@ -168,7 +168,10 @@ class StructureFunction:
     def escolhe_lista(dicionario):
         b = True
         while b is True:
-            num = int(input('\n Digite o número correspondente da lista que você deseja acessar:\n Para retornar ao menu principal, pressione 0\n\n '))
+            try:
+                num = int(input('\nDigite o número correspondente da lista que você deseja acessar:\nPara retornar ao menu principal, pressione 0\n\n '))
+            except ValueError:
+                num = 9999
             if num == 0:
                 escolha = 0
                 break
