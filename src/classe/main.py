@@ -18,7 +18,7 @@ def loop():
             listas = funcoes.tabelas_existentes_str(funcoes.create_list)
             funcoes.tabelas_existentes(listas)
             dicionario = funcoes.dict_list(listas)
-            escolha = funcoes.escolhe_lista(dicionario)
+            escolha = funcoes.escolhe_lista(dicionario, funcoes.tabelas_existentes, listas)
             if escolha == 0:
                 loop()
             x = funcoes.list_viewer_new(escolha)
@@ -29,7 +29,7 @@ def loop():
             listas = funcoes.tabelas_existentes_str(funcoes.create_list)
             funcoes.tabelas_existentes(listas)
             dicionario = funcoes.dict_list(listas)
-            escolha = funcoes.escolhe_lista(dicionario)
+            escolha = funcoes.escolhe_lista(dicionario, funcoes.tabelas_existentes, listas)
             if escolha == 0:
                 loop()
             add_or_del = funcoes.adicionar_remover_atualizar()

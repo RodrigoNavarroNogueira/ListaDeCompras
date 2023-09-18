@@ -170,7 +170,7 @@ class StructureFunction:
         return listas
 
 
-    def escolhe_lista(dicionario):
+    def escolhe_lista(dicionario, tabelas_existentes, listas):
         b = True
         while b is True:
             try:
@@ -188,6 +188,7 @@ class StructureFunction:
                 except KeyError:
                     print('Você não digitou um número de alguma lista')
                     escolha = 0
+                    tabelas_existentes(listas)
         return escolha
 
 
