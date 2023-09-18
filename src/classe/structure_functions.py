@@ -117,14 +117,14 @@ class StructureFunction:
 
     
     def update_product_or_amount(escolha):
-        product_amount = input('Deseja alterar um produto? ou quantidade?\n').strip()
-        if product_amount == 'produto':
+        product_amount = input('Deseja alterar um produto? ou quantidade? (1) para produto e (2) para quantidade\n').strip()
+        if product_amount == '1':
             product_amount = 'product'
             antigo = input('Qual produto você deseja atualizar?\n').capitalize()
             novo = input('Qual o nome do produto á ser adicionado?\n').capitalize()
             engine.update(escolha, product_amount, novo, antigo)
 
-        elif product_amount == 'quantidade':
+        elif product_amount == '2':
             product_amount = 'amount'
             antigo = input('Qual produto você deseja atualizar a quantidade?\n').capitalize()
             novo = int(input('Qual a quantidade?\n'))
