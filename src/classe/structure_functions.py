@@ -40,7 +40,7 @@ class StructureFunction:
         option = 0
         try:
             while option == 0 or option not in [1, 2, 3, 4]:
-                option = int(input("""\nSelecione a opção que você deseja: 
+                option = int(input("""\nSelecione a opção que você deseja:\n 
 [ 1 ] - Visualizar Listas 
 [ 2 ] - Adicionar/Remover/Atualizar Itens na Lista
 [ 3 ] - Criar/Excluir e Renomear uma Lista
@@ -53,7 +53,7 @@ class StructureFunction:
 
 
     def list_viewer(escolha):
-        print(f'Nome da lista escolhida: {escolha}\n')
+        print(f'Nome da lista escolhida: {escolha.title()}\n')
         cursor.execute(f"SELECT * FROM {escolha}")
         x = str(cursor.fetchall())
         if x == "[]":
@@ -134,10 +134,10 @@ class StructureFunction:
         b = True
         while b is True:
             try:
-                escolha = int(input(f"""\nEscolha uma opção, para retornar ao menu principal pressione 3:
-                Para criar uma lista pressione 0
-                Para excluir uma lista pressione 1
-                Para renomear uma lista pressione 2\n\n"""))
+                escolha = int(input(f"""\nEscolha uma opção, para retornar ao menu principal pressione 0:\n
+Para criar uma lista pressione 1
+Para excluir uma lista pressione 2
+Para renomear uma lista pressione 3\n\n"""))
                 if escolha in [0, 1, 2, 3]:
                     break
                 if type(escolha) is int:
@@ -151,7 +151,7 @@ class StructureFunction:
     def tabelas_existentes(listas):
         print('\n')
         for i, lista in enumerate(listas):
-            print(i + 1, lista[0])
+            print(i + 1,'-', lista[0].title())
 
 
     def dict_list(listas):
