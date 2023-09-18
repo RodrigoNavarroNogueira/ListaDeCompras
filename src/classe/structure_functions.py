@@ -118,22 +118,32 @@ class StructureFunction:
     
     def update_product_or_amount(escolha):
         product_amount = 0
-        while product_amount == 0 or product_amount not in ['1', '2']:
-            product_amount = input('Deseja alterar um produto? ou quantidade? (1) para produto e (2) para quantidade\n\n').strip()
-            if product_amount != '1' or '2':
-                print('\nOpção inválida, por favor, escolha entre o produto ou a quantidade\n')
-            if product_amount == '1':
-                product_amount = 'product'
-                antigo = input('Qual produto você deseja atualizar?\n').capitalize()
-                novo = input('Qual o nome do produto á ser adicionado?\n').capitalize()
-                engine.update(escolha, product_amount, novo, antigo)
+        cursor.execute(f"SELECT * FROM {escolha}")
+        x = list(cursor.fetchall())
+        if x == []:
+            print('\nA lista está vazia, adicione itens para modificá-los')
+        else:
+            while product_amount == 0 or product_amount not in ['1', '2', '3']:
+                product_amount = input('Deseja alterar um produto? ou quantidade? (1) Para Produto e (2) Para Quantidade (3) Para Retornar ao Menu\n\n').strip()
+                
+                if product_amount != '1' or '2' or '3':
+                    print('\nOpção inválida, por favor, escolha entre o produto ou a quantidade\n')
 
-            elif product_amount == '2':
-                product_amount = 'amount'
-                antigo = input('Qual produto você deseja atualizar a quantidade?\n').capitalize()
-                novo = int(input('Qual a quantidade?\n'))
-                engine.update(escolha, product_amount, novo, antigo)
+                if product_amount == '1':
+                    product_amount = 'product'
+                    antigo = input('Qual produto você deseja atualizar?\n\n').capitalize()
+                    novo = input('Qual o nome do produto á ser adicionado?\n').capitalize()
+                    engine.update(escolha, product_amount, novo, antigo)
 
+                elif product_amount == '2':
+                    product_amount = 'amount'
+                    antigo = input('Qual produto você deseja atualizar a quantidade?\n\n').capitalize()
+                    novo = int(input('Qual a quantidade?\n'))
+                    engine.update(escolha, product_amount, novo, antigo)
+
+                elif product_amount == '3':
+                    break
+        
 
     def criar_excluir_renomear():
         b = True
