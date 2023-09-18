@@ -63,11 +63,12 @@ class StructureFunction:
 
 
     def list_viewer_new(escolha):
-        print(f'Nome da lista escolhida: {escolha}\n')
+        print(f'Nome da lista escolhida: {escolha.title()}\n')
         cursor.execute(f"SELECT * FROM {escolha}")
         x = list(cursor.fetchall())
         if x == []:
-            return 'Esta lista está vazia!\n'
+            print('Esta lista está vazia!')
+            return 'Esta lista está vazia!'
         else:
             count = 0
             result = []
