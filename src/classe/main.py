@@ -49,22 +49,22 @@ def loop():
         elif opcao == 3:
             escolha = funcoes.criar_excluir_renomear()
 
-            if escolha == 0:
+            if escolha == 1:
                 funcoes.create_list()
                 loop()
 
-            elif escolha == 1:
+            elif escolha == 2:
                 listas = funcoes.tabelas_existentes_str(funcoes.create_list)
                 funcoes.tabelas_existentes(listas)
                 dicionario = funcoes.dict_list(listas)
                 funcoes.delete_list(dicionario)
                 loop()
                 
-            elif escolha == 2:
+            elif escolha == 3:
                 funcoes.rename_list()
                 loop()
 
-            elif escolha == 3:
+            elif escolha == 0:
                 loop()
 
         elif opcao == 4:
