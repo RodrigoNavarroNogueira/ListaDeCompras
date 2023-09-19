@@ -52,16 +52,6 @@ class StructureFunction:
         return option
 
 
-    def list_viewer(escolha):
-        print(f'Nome da lista escolhida: {escolha.title()}\n')
-        cursor.execute(f"SELECT * FROM {escolha}")
-        x = str(cursor.fetchall())
-        if x == "[]":
-            print('Esta lista está vazia!\n')
-        else:
-            print(x)
-
-
     def list_viewer_new(escolha):
         print(f'Nome da lista escolhida: {escolha.title()}\n')
         cursor.execute(f"SELECT * FROM {escolha}")
