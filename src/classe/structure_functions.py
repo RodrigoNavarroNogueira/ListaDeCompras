@@ -6,6 +6,7 @@ from datetime import datetime
 
 class StructureFunction:
     def initiation():
+        print('\n')
         print('*-' * 30)
         print(f'{" Lista de Compras ":=^60}')
         print('*-' * 30, '\n')
@@ -18,22 +19,22 @@ class StructureFunction:
 
 
     def create_list():
-        name_list = input('Escolha o nome da sua lista:\n').lower().strip()
+        name_list = input('\nEscolha o nome da sua lista:\n\n').lower().strip()
         db.create_table_lista(name_list)
         return name_list
 
 
     def delete_list(dicionario):
-        num = int(input('Digite o número correspondente da lista que você deseja excluir:\n'))
+        num = int(input('\nDigite o número correspondente da lista que você deseja excluir:\n\n'))
         db.drop_table_lista(dicionario[num][0])
-        print(f'Lista {dicionario[num][0]} removida com sucesso!')
+        print(f'\nLista {dicionario[num][0]} removida com sucesso!')
 
 
     def rename_list():
-        name_list = input('Qual o nome da lista que você deseja renomear?\n').strip()
-        new_name = input('Qual o nome que deseja colocar?\n').strip()
+        name_list = input('\nQual o nome da lista que você deseja renomear?\n\n').strip()
+        new_name = input('\nQual o nome que deseja colocar?\n\n').strip()
         db.rename_lista(name_list, new_name)
-        print('O nome da lista foi alterada!')
+        print('\nO nome da lista foi alterada!')
 
 
     def start():
@@ -53,7 +54,7 @@ class StructureFunction:
 
 
     def list_viewer_new(escolha):
-        print(f'Nome da lista escolhida: {escolha.title()}\n')
+        print(f'\nNome da lista escolhida: {escolha.title()}\n')
         cursor.execute(f"SELECT * FROM {escolha}")
         x = list(cursor.fetchall())
         if x == []:
@@ -75,9 +76,9 @@ class StructureFunction:
         while add_or_del == 0 or add_or_del not in 'AUR':
             add_or_del = input(
             """\nDeseja adicionar, atualizar ou remover produtos?
-            ( A ) para Adicionar
-            ( U ) para Atualizar
-            ( R ) para Remover\n""").upper().strip()
+( A ) para Adicionar
+( U ) para Atualizar
+( R ) para Remover\n\n""").upper().strip()
         return add_or_del
 
 
@@ -89,9 +90,9 @@ class StructureFunction:
                 break
 
             else:
-                quantidade = int(input('Quantidade?: '))
+                quantidade = int(input('\nQuantidade?:\n\n'))
                 engine.create(escolha, random.randint(1, 999), produto, quantidade, escolha, 'Rodrigo', datetime.now())
-                print(f'Produto {produto} adicionado com sucesso')
+                print(f'\nProduto {produto} adicionado com sucesso')
 
 
     def remover_produtos(escolha):
@@ -114,27 +115,27 @@ class StructureFunction:
             print('\nA lista está vazia, adicione itens para modificá-los')
         else:
             while product_amount == 0 or product_amount not in ['1', '2', '3']:
-                product_amount = input('Deseja alterar um produto? ou quantidade? (1) Para Produto e (2) Para Quantidade (3) Para Retornar ao Menu\n\n').strip()
+                product_amount = input('\nDeseja alterar um produto? ou quantidade? (1) Para Produto e (2) Para Quantidade (3) Para Retornar ao Menu\n\n').strip()
                 
                 if product_amount not in ['1', '2', '3']:
                     print('\nOpção inválida, por favor, escolha entre o produto ou a quantidade\n')
 
                 if product_amount == '1':
                     product_amount = 'product'
-                    antigo = input('Qual produto você deseja atualizar?\n\n').capitalize()
+                    antigo = input('\nQual produto você deseja atualizar?\n\n').capitalize()
                     if antigo != x[0][1]:
                         print('\nVocê inseriu um produto que não existe na lista, por gentileza verifique a lista novamente\n')
                     else:
-                        novo = input('Qual o nome do produto á ser adicionado?\n').capitalize()
+                        novo = input('\nQual o nome do produto á ser adicionado?\n').capitalize()
                         engine.update(escolha, product_amount, novo, antigo)
 
                 elif product_amount == '2':
                     product_amount = 'amount'
-                    antigo = input('Qual produto você deseja atualizar a quantidade?\n\n').capitalize()
+                    antigo = input('\nQual produto você deseja atualizar a quantidade?\n\n').capitalize()
                     if antigo != x[0][1]:
                         print('\nVocê inseriu um produto que não existe na lista, por gentileza verifique a lista novamente\n')
                     else:
-                        novo = int(input('Qual a quantidade?\n'))
+                        novo = int(input('\nQual a quantidade?\n'))
                         engine.update(escolha, product_amount, novo, antigo)
 
                 elif product_amount == '3':
