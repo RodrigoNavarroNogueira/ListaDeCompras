@@ -96,15 +96,21 @@ class StructureFunction:
 
 
     def remover_produtos(escolha):
-        while True:
-            produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize().strip()
+        cursor.execute(f"SELECT * FROM {escolha}")
+        x = list(cursor.fetchall())
+        if x == []:
+            print('\nA lista está vazia, adicione itens para modificá-los')
 
-            if produto == "X":
-                break
+        else:
+            while True:
+                produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize().strip()
 
-            else:
-                engine.delete(escolha, produto)
-                print(f'Produto {produto} excluido com sucesso')
+                if produto == "X":
+                    break
+
+                else:
+                    engine.delete(escolha, produto)
+                    print(f'Produto {produto} excluido com sucesso')
 
     
     def update_product_or_amount(escolha):
