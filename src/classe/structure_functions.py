@@ -84,7 +84,7 @@ class StructureFunction:
         add_or_del = 0
         while add_or_del == 0 or add_or_del not in 'AUR':
             add_or_del = input(
-            """Deseja adicionar, atualizar ou remover produtos?
+            """\nDeseja adicionar, atualizar ou remover produtos?
             ( A ) para Adicionar
             ( U ) para Atualizar
             ( R ) para Remover\n""").upper().strip()
@@ -93,7 +93,7 @@ class StructureFunction:
 
     def add_produtos(escolha):
         while True:
-            produto = input('Digite o produto que deseja adicionar: (Para sair pressione "X") ').capitalize().strip()
+            produto = input('\nDigite o produto que deseja adicionar: (Para sair pressione "X")\n\n').capitalize().strip()
 
             if produto == "X":
                 break
@@ -207,7 +207,7 @@ Para renomear uma lista pressione 3\n\n"""))
                     escolha = a[2:-3]
                     b = False
                 except KeyError:
-                    print('Você não digitou um número de alguma lista')
+                    print('\nVocê não digitou um número de alguma lista')
                     escolha = 0
                     tabelas_existentes(listas)
         return escolha
