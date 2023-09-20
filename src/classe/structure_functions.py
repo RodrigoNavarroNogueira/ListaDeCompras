@@ -24,11 +24,23 @@ class StructureFunction:
         return name_list
 
 
-    def delete_list(dicionario):
-        num = int(input('\nDigite o número correspondente da lista que você deseja excluir:\n\n'))
-        db.drop_table_lista(dicionario[num][0])
-        print(f'\nLista {dicionario[num][0]} removida com sucesso!')
-
+    def delete_list(dicionario, tabelas_existentes, listas):
+        b = True
+        while b is True:
+            try:
+                num = int(input('\nDigite o número correspondente da lista que você deseja acessar:\nPara retornar ao menu principal, pressione 0\n\n '))
+            except ValueError:
+                num = 9999
+            if num == 0:
+                break
+            else:
+                try:
+                    db.drop_table_lista(dicionario[num][0])
+                    print(f'\nLista {dicionario[num][0]} removida com sucesso!')
+                    b = False
+                except KeyError:
+                    print('\nVocê não digitou um número de alguma lista')
+                    tabelas_existentes(listas)
 
     def rename_list():
         name_list = input('\nQual o nome da lista que você deseja renomear?\n\n').strip()

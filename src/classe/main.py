@@ -63,7 +63,7 @@ def loop():
                 listas = funcoes.tabelas_existentes_str(funcoes.create_list)
                 funcoes.tabelas_existentes(listas)
                 dicionario = funcoes.dict_list(listas)
-                funcoes.delete_list(dicionario)
+                funcoes.delete_list(dicionario, funcoes.tabelas_existentes, listas)
                 loop()
                 
             elif escolha == 3:
