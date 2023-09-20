@@ -3,6 +3,17 @@ import email.message
 from src.utils.settings import EMAIL, PASSWORD
 
 
+def receber_email(x):
+    if x == 'Esta lista está vazia!':
+        option = 2
+        return option
+    else:
+        option = 0
+        while option == 0 or option not in [1, 2]:
+             option = int(input('\nDeseja receber a lista no e-mail? (1) SIM (2) NÃO:\n\n'))
+    return option
+
+
 def enviar_email(x): 
     corpo_email = f"""
     <p>Segue sua lista escolhida no aplicativo:</p>
