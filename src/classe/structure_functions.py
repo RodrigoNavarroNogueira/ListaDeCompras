@@ -13,7 +13,7 @@ class StructureFunction:
 
 
     def create_first_list():
-        name_list = input('Escolha o nome da sua primeira lista:\n').lower().strip()
+        name_list = input('\nEscolha o nome da sua primeira lista:\n').lower().strip()
         db.create_table_lista(name_list)
         return name_list
 
@@ -103,14 +103,14 @@ class StructureFunction:
 
         else:
             while True:
-                produto = input('Digite o produto que deseja excluir: (Para sair pressione "X") ').capitalize().strip()
+                produto = input('Digite o produto que deseja excluir: (Para sair pressione "X")\n\n').capitalize().strip()
 
                 if produto == "X":
                     break
 
                 else:
                     engine.delete(escolha, produto)
-                    print(f'Produto {produto} excluido com sucesso')
+                    print(f'\nProduto {produto} excluido com \n')
 
     
     def update_product_or_amount(escolha):
@@ -118,7 +118,7 @@ class StructureFunction:
         cursor.execute(f"SELECT * FROM {escolha}")
         x = list(cursor.fetchall())
         if x == []:
-            print('\nA lista está vazia, adicione itens para modificá-los')
+            print('\nA lista está vazia, adicione itens para modificá-la')
         else:
             while product_amount == 0 or product_amount not in ['1', '2', '3']:
                 product_amount = input('\nDeseja alterar um produto? ou quantidade? (1) Para Produto e (2) Para Quantidade (3) Para Retornar ao Menu\n\n').strip()

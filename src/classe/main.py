@@ -39,10 +39,12 @@ def loop():
                 loop()
 
             elif add_or_del == 'R':
+                funcoes.list_viewer_new(escolha)
                 funcoes.remover_produtos(escolha)
                 loop()
 
             elif add_or_del == 'U':
+                funcoes.list_viewer_new(escolha)
                 funcoes.update_product_or_amount(escolha)
                 loop()
 
