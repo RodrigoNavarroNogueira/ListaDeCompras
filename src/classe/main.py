@@ -1,7 +1,7 @@
 from src.classe.list_creator import ListCreator
 from src.classe.structure_functions import StructureFunction
 from src.db.concrete.list_engine import ListEngine
-from src.email import enviar_email
+from src.email import enviar_email, receber_email
 
 funcoes = StructureFunction
 lista = ListCreator
@@ -22,8 +22,11 @@ def loop():
             if escolha == 0:
                 loop()
             x = funcoes.list_viewer_new(escolha)
-            #enviar_email(x)
-            loop()
+            y = receber_email(x)
+            if y == 1:
+                enviar_email(x)
+            else:
+                loop()
 
         elif opcao == 2:
             listas = funcoes.tabelas_existentes_str(funcoes.create_list)
@@ -71,7 +74,7 @@ def loop():
                 loop()
 
         elif opcao == 4:
-            print('Finalizando o programa, até mais!')
+            print('\nFinalizando o programa, até mais!\n')
             raise SystemExit
 
 loop()
