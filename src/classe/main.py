@@ -47,6 +47,7 @@ def loop():
                 loop()
 
         elif opcao == 3:
+            listas = funcoes.tabelas_existentes_str(funcoes.create_list)
             escolha = funcoes.criar_excluir_renomear()
 
             if escolha == 1:
