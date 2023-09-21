@@ -42,10 +42,9 @@ class StructureFunction:
                     print('\nVocê não digitou um número de alguma lista')
                     tabelas_existentes(listas)
 
-    def rename_list():
-        name_list = input('\nQual o nome da lista que você deseja renomear?\n\n').strip()
+    def rename_list(escolha):
         new_name = input('\nQual o nome que deseja colocar?\n\n').strip()
-        db.rename_lista(name_list, new_name)
+        db.rename_lista(escolha, new_name)
         print('\nO nome da lista foi alterada!')
 
 

@@ -67,11 +67,15 @@ def loop():
                 loop()
                 
             elif escolha == 3:
-                funcoes.rename_list()
-                loop()
-
-            elif escolha == 0:
-                loop()
+                listas = funcoes.tabelas_existentes_str(funcoes.create_list)
+                funcoes.tabelas_existentes(listas)
+                dicionario = funcoes.dict_list(listas)
+                escolha = funcoes.escolhe_lista(dicionario, funcoes.tabelas_existentes, listas)
+                if escolha == 0:
+                    loop()
+                else:
+                    funcoes.rename_list(escolha)
+                    loop()
 
         elif opcao == 4:
             print('\nFinalizando o programa, até mais!\n')
