@@ -56,6 +56,7 @@ def loop():
             escolha = funcoes.criar_excluir_renomear()
 
             if escolha == 1:
+                dicionario = funcoes.dict_list(listas)
                 funcoes.create_list()
                 loop()
 
