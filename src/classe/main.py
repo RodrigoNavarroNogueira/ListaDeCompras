@@ -15,7 +15,9 @@ def loop():
         opcao = funcoes.start()
 
         if opcao == 1:
-            listas = funcoes.tabelas_existentes_str(funcoes.create_list)
+            lista_sem_tupla = []
+            listas = funcoes.tabelas_existentes_str(funcoes.create_list, lista_sem_tupla)
+            lista_sem_tupla = [item for tupla in listas for item in tupla]
             funcoes.tabelas_existentes(listas)
             dicionario = funcoes.dict_list(listas)
             escolha = funcoes.escolhe_lista(dicionario, funcoes.tabelas_existentes, listas)
@@ -29,7 +31,9 @@ def loop():
                 loop()
 
         elif opcao == 2:
-            listas = funcoes.tabelas_existentes_str(funcoes.create_list)
+            lista_sem_tupla = []
+            listas = funcoes.tabelas_existentes_str(funcoes.create_list, lista_sem_tupla)
+            lista_sem_tupla = [item for tupla in listas for item in tupla]
             funcoes.tabelas_existentes(listas)
             dicionario = funcoes.dict_list(listas)
             escolha = funcoes.escolhe_lista(dicionario, funcoes.tabelas_existentes, listas)
@@ -52,23 +56,24 @@ def loop():
                 loop()
 
         elif opcao == 3:
-            listas = funcoes.tabelas_existentes_str(funcoes.create_list)
+            lista_sem_tupla = []
+            listas = funcoes.tabelas_existentes_str(funcoes.create_list, lista_sem_tupla)
             escolha = funcoes.criar_excluir_renomear()
+            lista_sem_tupla = [item for tupla in listas for item in tupla]
 
             if escolha == 1:
-                dicionario = funcoes.dict_list(listas)
-                funcoes.create_list()
+                funcoes.create_list(lista_sem_tupla)
                 loop()
 
             elif escolha == 2:
-                listas = funcoes.tabelas_existentes_str(funcoes.create_list)
+                listas = funcoes.tabelas_existentes_str(funcoes.create_list, lista_sem_tupla)
                 funcoes.tabelas_existentes(listas)
                 dicionario = funcoes.dict_list(listas)
                 funcoes.delete_list(dicionario, funcoes.tabelas_existentes, listas)
                 loop()
                 
             elif escolha == 3:
-                listas = funcoes.tabelas_existentes_str(funcoes.create_list)
+                listas = funcoes.tabelas_existentes_str(funcoes.create_list, lista_sem_tupla)
                 funcoes.tabelas_existentes(listas)
                 dicionario = funcoes.dict_list(listas)
                 escolha = funcoes.escolhe_lista(dicionario, funcoes.tabelas_existentes, listas)
