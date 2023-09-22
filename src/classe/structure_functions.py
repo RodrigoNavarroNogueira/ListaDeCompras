@@ -192,7 +192,7 @@ Para renomear uma lista pressione 3\n\n"""))
         cursor.execute('SELECT name FROM sqlite_master WHERE type="table";')
         listas = list(cursor.fetchall())
         if listas == []:
-            print('Não existe nenhuma lista, será necessário criar sua primeira!')
+            print('\nNão existe nenhuma lista, será necessário criar sua primeira!')
             create_list()
             cursor.execute('SELECT name FROM sqlite_master WHERE type="table";')
             listas = list(cursor.fetchall())
