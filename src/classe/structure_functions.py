@@ -18,10 +18,14 @@ class StructureFunction:
         return name_list
 
 
-    def create_list():
+    def create_list(lista_sem_tupla):
         name_list = input('\nEscolha o nome da sua lista:\n\n').lower().strip()
-        db.create_table_lista(name_list)
-        return name_list
+        if name_list in lista_sem_tupla:
+            print('\nO nome da que você digitou já existe, por favor escolha outro')
+        else:
+            db.create_table_lista(name_list)
+            print('\nLista criada com sucesso!')
+            return name_list
 
 
     def delete_list(dicionario, tabelas_existentes, listas):
@@ -188,12 +192,12 @@ Para renomear uma lista pressione 3\n\n"""))
         return dicionario
 
 
-    def tabelas_existentes_str(create_list):
+    def tabelas_existentes_str(create_list, lista_sem_tupla):
         cursor.execute('SELECT name FROM sqlite_master WHERE type="table";')
         listas = list(cursor.fetchall())
         if listas == []:
             print('\nNão existe nenhuma lista, será necessário criar sua primeira!')
-            create_list()
+            create_list(lista_sem_tupla)
             cursor.execute('SELECT name FROM sqlite_master WHERE type="table";')
             listas = list(cursor.fetchall())
         return listas
