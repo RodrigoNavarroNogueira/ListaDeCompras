@@ -20,7 +20,9 @@ class StructureFunction:
 
     def create_list(lista_sem_tupla):
         name_list = input('\nEscolha o nome da sua lista:\n\n').lower().strip()
-        if name_list in lista_sem_tupla:
+        if name_list.isnumeric() == True:
+            print('\nVocê não pode nomear o nome de uma lista somente com números, tente novamente')
+        elif name_list in lista_sem_tupla:
             print('\nO nome da que você digitou já existe, por favor escolha outro')
         else:
             db.create_table_lista(name_list)
