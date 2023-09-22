@@ -13,7 +13,13 @@ class StructureFunction:
 
 
     def create_first_list():
-        name_list = input('\nEscolha o nome da sua primeira lista:\n').lower().strip()
+        name_list = ''
+        while True:
+            name_list = input('\nEscolha o nome da sua primeira lista:\n\n').lower().strip()
+            if name_list.isnumeric() == True:
+                print('\nVocê não pode nomear o nome de uma lista somente com números, tente novamente')
+            else:
+                break
         db.create_table_lista(name_list)
         return name_list
 
